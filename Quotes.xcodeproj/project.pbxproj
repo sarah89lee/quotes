@@ -15,8 +15,16 @@
 		1148904E207F008000F633D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1148904C207F008000F633D3 /* Main.storyboard */; };
 		11489050207F008000F633D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1148904F207F008000F633D3 /* Assets.xcassets */; };
 		11489053207F008000F633D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11489051207F008000F633D3 /* LaunchScreen.storyboard */; };
+		117F6F88207F190100719311 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F6F87207F190100719311 /* UIView+Autolayout.swift */; };
+		117F6F8A207F307D00719311 /* UIWindow+SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F6F89207F307D00719311 /* UIWindow+SafeAreaInsets.swift */; };
 		11CB3EB5207F0799009EA0A5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */; };
 		11CB3EB7207F0A37009EA0A5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */; };
+		11CB3EBA207F0E63009EA0A5 /* UIColor+QuotesColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */; };
+		11CB3EBC207F0E97009EA0A5 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EBB207F0E97009EA0A5 /* UIColor+Hex.swift */; };
+		11CB3EBE207F105A009EA0A5 /* UIFont+QuotesFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EBD207F105A009EA0A5 /* UIFont+QuotesFont.swift */; };
+		11CB3EC2207F12A7009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */; };
+		11CB3EC3207F12A9009EA0A5 /* QanelasSoftDEMO-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */; };
+		11CB3EC4207F12AB009EA0A5 /* QanelasSoftDEMO-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +36,16 @@
 		1148904D207F008000F633D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1148904F207F008000F633D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11489052207F008000F633D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		117F6F87207F190100719311 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
+		117F6F89207F307D00719311 /* UIWindow+SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+SafeAreaInsets.swift"; sourceTree = "<group>"; };
 		11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+QuotesColors.swift"; sourceTree = "<group>"; };
+		11CB3EBB207F0E97009EA0A5 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		11CB3EBD207F105A009EA0A5 /* UIFont+QuotesFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+QuotesFont.swift"; sourceTree = "<group>"; };
+		11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-UltraLight.otf"; sourceTree = "<group>"; };
+		11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-ExtraBold.otf"; sourceTree = "<group>"; };
+		11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-Medium.otf"; sourceTree = "<group>"; };
 		1E2527B01DAF3F2F798162EA /* Pods-quotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-quotes/Pods-quotes.release.xcconfig"; sourceTree = "<group>"; };
 		3F60B6BB48753AD634BDB7CA /* Pods-quotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quotes/Pods-quotes.debug.xcconfig"; sourceTree = "<group>"; };
 		F23719A438E313571830AF47 /* Pods_quotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_quotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +84,9 @@
 		112222F8207F063500226C83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */,
+				11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */,
+				11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */,
 				112222F9207F063500226C83 /* AppDelegate.swift */,
 				112222FA207F063500226C83 /* Info.plist */,
 			);
@@ -77,7 +96,7 @@
 		1148903A207F007F00F633D3 = {
 			isa = PBXGroup;
 			children = (
-				11489045207F008000F633D3 /* quotes */,
+				11489045207F008000F633D3 /* Quotes */,
 				11489044207F008000F633D3 /* Products */,
 				27451DD257F79E0D367C2F10 /* Pods */,
 				EC0774A9820F0030D073AD2C /* Frameworks */,
@@ -92,17 +111,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		11489045207F008000F633D3 /* quotes */ = {
+		11489045207F008000F633D3 /* Quotes */ = {
 			isa = PBXGroup;
 			children = (
+				1148904F207F008000F633D3 /* Assets.xcassets */,
+				11CB3EB8207F0E36009EA0A5 /* Extensions */,
+				11489051207F008000F633D3 /* LaunchScreen.storyboard */,
+				1148904C207F008000F633D3 /* Main.storyboard */,
 				112222F4207F063500226C83 /* Model */,
 				112222F8207F063500226C83 /* Supporting Files */,
 				112222F5207F063500226C83 /* ViewControllers */,
-				1148904C207F008000F633D3 /* Main.storyboard */,
-				1148904F207F008000F633D3 /* Assets.xcassets */,
-				11489051207F008000F633D3 /* LaunchScreen.storyboard */,
 			);
-			path = quotes;
+			path = Quotes;
+			sourceTree = "<group>";
+		};
+		11CB3EB8207F0E36009EA0A5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */,
+				11CB3EBB207F0E97009EA0A5 /* UIColor+Hex.swift */,
+				11CB3EBD207F105A009EA0A5 /* UIFont+QuotesFont.swift */,
+				117F6F87207F190100719311 /* UIView+Autolayout.swift */,
+				117F6F89207F307D00719311 /* UIWindow+SafeAreaInsets.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		27451DD257F79E0D367C2F10 /* Pods */ = {
@@ -161,7 +193,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1148903E207F007F00F633D3 /* Build configuration list for PBXProject "quotes" */;
+			buildConfigurationList = 1148903E207F007F00F633D3 /* Build configuration list for PBXProject "Quotes" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -185,7 +217,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				112222FE207F063500226C83 /* Info.plist in Resources */,
+				11CB3EC2207F12A7009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf in Resources */,
+				11CB3EC3207F12A9009EA0A5 /* QanelasSoftDEMO-UltraLight.otf in Resources */,
 				11489053207F008000F633D3 /* LaunchScreen.storyboard in Resources */,
+				11CB3EC4207F12AB009EA0A5 /* QanelasSoftDEMO-Medium.otf in Resources */,
 				11489050207F008000F633D3 /* Assets.xcassets in Resources */,
 				1148904E207F008000F633D3 /* Main.storyboard in Resources */,
 			);
@@ -258,6 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11CB3EBC207F0E97009EA0A5 /* UIColor+Hex.swift in Sources */,
+				117F6F8A207F307D00719311 /* UIWindow+SafeAreaInsets.swift in Sources */,
+				117F6F88207F190100719311 /* UIView+Autolayout.swift in Sources */,
+				11CB3EBA207F0E63009EA0A5 /* UIColor+QuotesColors.swift in Sources */,
+				11CB3EBE207F105A009EA0A5 /* UIFont+QuotesFont.swift in Sources */,
 				112222FD207F063500226C83 /* AppDelegate.swift in Sources */,
 				112222FC207F063500226C83 /* FeedViewController.swift in Sources */,
 				11CB3EB5207F0799009EA0A5 /* ProfileViewController.swift in Sources */,
@@ -428,7 +468,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1148903E207F007F00F633D3 /* Build configuration list for PBXProject "quotes" */ = {
+		1148903E207F007F00F633D3 /* Build configuration list for PBXProject "Quotes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				11489055207F008000F633D3 /* Debug */,
