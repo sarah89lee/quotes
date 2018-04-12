@@ -1,6 +1,6 @@
 //
 //  TabBarViewController.swift
-//  quotes
+//  Quotes
 //
 //  Created by Sarah Lee on 4/11/18.
 //  Copyright © 2018 Sarah Lee. All rights reserved.
