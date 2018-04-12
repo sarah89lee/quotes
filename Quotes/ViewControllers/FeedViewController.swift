@@ -12,11 +12,13 @@ class FeedViewController: UIViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var tableView: UITableView!
+    
     fileprivate lazy var searchBar = UISearchBar(frame: CGRect.zero)
     
     fileprivate let titleLabel: UILabel = {
         let label: UILabel = UILabel()
-        label.text = "Quotes"
+        label.text = "QUOTES"
         label.font = UIFont.extraBoldFont(size: 20.0)
         label.textColor = UIColor.quotesPinkColor()
         return label
@@ -33,6 +35,9 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
+        tableView.layoutMargins = UIEdgeInsets.zero
         
         searchButton.addTarget(
             self,
@@ -82,7 +87,7 @@ class FeedViewController: UIViewController {
                 state: UIControlState.normal
             )
             self?.searchBar.delegate = self
-            self?.searchBar.placeholder = "Search"
+            self?.searchBar.placeholder = "Search who said ir or who heard it"
             self?.searchBar.setShowsCancelButton(true, animated: true)
             self?.searchBar.becomeFirstResponder()
             
@@ -113,3 +118,43 @@ extension FeedViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: -
+
+extension FeedViewController: UITableViewDelegate {
+    
+    // MARK: - UITableViewDelegate Methods
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let defaultCellHeight: CGFloat = 150.0
+        return defaultCellHeight
+    }
+}
+
+// MARK: -
+
+extension FeedViewController: UITableViewDataSource {
+    
+    // MARK: - UITableViewDataSource Methods
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
+        cell.setQuote(quote: "Everything happens for a reason. Testing long quote blah blah blah")
+        return cell
+    }
+}
