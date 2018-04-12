@@ -1,0 +1,23 @@
+PODS:
+  - Alamofire (4.7.0)
+  - Alamofire-SwiftyJSON (3.0.0):
+    - Alamofire (~> 4.5)
+    - SwiftyJSON (~> 4.0.0)
+  - PKHUD (5.0.0)
+  - SwiftyJSON (4.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.6)
+  - Alamofire-SwiftyJSON (~> 3.0.0)
+  - PKHUD (~> 5.0)
+  - SwiftyJSON (~> 4.0.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 907e0a98eb68cdb7f9d1f541a563d6ac5dc77b25
+  Alamofire-SwiftyJSON: 2b3649d57dc7bb2880fb8b86f8bb969397666916
+  PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+
+PODFILE CHECKSUM: ced4685c714e0abd93a146711dc4ff197045e14a
+
+COCOAPODS: 1.4.0
