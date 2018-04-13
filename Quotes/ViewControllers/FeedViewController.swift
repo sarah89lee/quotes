@@ -15,15 +15,7 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate lazy var searchBar = UISearchBar(frame: CGRect.zero)
-    
-    fileprivate let titleLabel: UILabel = {
-        let label: UILabel = UILabel()
-        label.text = "QUOTES"
-        label.font = UIFont.extraBoldFont(size: 20.0)
-        label.textColor = UIColor.quotesPinkColor()
-        return label
-    }()
-    
+
     fileprivate let searchButton: UIButton = {
         let button: UIButton = UIButton()
         button.setImage(UIImage(named: "SearchIcon"), for: UIControlState.normal)
@@ -45,11 +37,7 @@ class FeedViewController: UIViewController {
             for: UIControlEvents.touchUpInside
         )
         
-        // set the custom navigationItem title and right bar button
-        if let navigationController = navigationController {
-            navigationController.navigationBar.topItem?.titleView = titleLabel
-            navigationController.navigationBar.topItem?.setRightBarButton(UIBarButtonItem(customView: searchButton), animated: false)
-        }
+        setNavigationBarTitleAndSearch()
         
         // set the custom font and color of the search bar cancel button
         let attributes = [
@@ -63,6 +51,16 @@ class FeedViewController: UIViewController {
         let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideUISearchBar?.textColor = UIColor.black
         textFieldInsideUISearchBar?.font = UIFont.mediumFont(size: 12.0)
+    }
+    
+    // MARK: - Private Methods12
+    
+    fileprivate func setNavigationBarTitleAndSearch() {
+        if let navigationController = navigationController,
+            let navigationBar = navigationController.navigationBar as? QuotesNavigationBar {
+            navigationBar.setNavigationBar(title: "QUOTES", tint: QuotesNavigationBarTint.Light)
+            navigationBar.topItem?.setRightBarButton(UIBarButtonItem(customView: searchButton), animated: false)
+        }
     }
     
     // MARK: - Action Methods
@@ -110,10 +108,7 @@ extension FeedViewController: UISearchBarDelegate {
                 return
             }
             
-            if let navigationController = strongSelf.navigationController {
-                navigationController.navigationBar.topItem?.titleView = strongSelf.titleLabel
-                navigationController.navigationBar.topItem?.setRightBarButton(UIBarButtonItem(customView: strongSelf.searchButton), animated: false)
-            }
+            strongSelf.setNavigationBarTitleAndSearch()
         }
     }
 }

@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0996C03F7532CF4CD311A55B /* Pods_quotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23719A438E313571830AF47 /* Pods_quotes.framework */; };
-		112222FB207F063500226C83 /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112222F6207F063500226C83 /* QuotesViewController.swift */; };
-		112222FC207F063500226C83 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112222F7207F063500226C83 /* FeedViewController.swift */; };
 		112222FD207F063500226C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112222F9207F063500226C83 /* AppDelegate.swift */; };
 		112222FE207F063500226C83 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112222FA207F063500226C83 /* Info.plist */; };
 		11489050207F008000F633D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1148904F207F008000F633D3 /* Assets.xcassets */; };
@@ -28,21 +26,23 @@
 		11A12CE1208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A12CDF208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib */; };
 		11A12CE42080597D000D88E7 /* ProfileFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CE22080597D000D88E7 /* ProfileFeedCollectionViewCell.swift */; };
 		11A12CE52080597D000D88E7 /* ProfileFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A12CE32080597D000D88E7 /* ProfileFeedCollectionViewCell.xib */; };
-		11CB3EB5207F0799009EA0A5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */; };
-		11CB3EB7207F0A37009EA0A5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */; };
+		11A12CEB20806D78000D88E7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CE720806D77000D88E7 /* FeedViewController.swift */; };
+		11A12CEC20806D78000D88E7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CE820806D77000D88E7 /* ProfileViewController.swift */; };
+		11A12CED20806D78000D88E7 /* QuotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CE920806D77000D88E7 /* QuotesViewController.swift */; };
+		11A12CEE20806D78000D88E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CEA20806D77000D88E7 /* TabBarViewController.swift */; };
+		11A12CF120806DAD000D88E7 /* QuotesNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CF020806DAD000D88E7 /* QuotesNavigationBar.swift */; };
 		11CB3EBA207F0E63009EA0A5 /* UIColor+QuotesColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */; };
 		11CB3EBC207F0E97009EA0A5 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EBB207F0E97009EA0A5 /* UIColor+Hex.swift */; };
 		11CB3EBE207F105A009EA0A5 /* UIFont+QuotesFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EBD207F105A009EA0A5 /* UIFont+QuotesFont.swift */; };
 		11CB3EC2207F12A7009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */; };
 		11CB3EC3207F12A9009EA0A5 /* QanelasSoftDEMO-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */; };
 		11CB3EC4207F12AB009EA0A5 /* QanelasSoftDEMO-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */; };
+		11DF173120807BA70010F4CD /* QuoteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF173020807BA70010F4CD /* QuoteReviewViewController.swift */; };
 		F02014710779A6CC1EEF9571 /* Pods_Quotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628030424FBAC36A3AD0B6D2 /* Pods_Quotes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0BBC51F81E45BA9358ECABA3 /* Pods-Quotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quotes/Pods-Quotes.debug.xcconfig"; sourceTree = "<group>"; };
-		112222F6207F063500226C83 /* QuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
-		112222F7207F063500226C83 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		112222F9207F063500226C83 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		112222FA207F063500226C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/sarahlee/Documents/quotes/quotes/Supporting Files/Info.plist"; sourceTree = "<absolute>"; };
 		11489043207F008000F633D3 /* Quotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,14 +62,18 @@
 		11A12CDF208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileQuotesSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		11A12CE22080597D000D88E7 /* ProfileFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		11A12CE32080597D000D88E7 /* ProfileFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileFeedCollectionViewCell.xib; sourceTree = "<group>"; };
-		11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		11A12CE720806D77000D88E7 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		11A12CE820806D77000D88E7 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		11A12CE920806D77000D88E7 /* QuotesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotesViewController.swift; sourceTree = "<group>"; };
+		11A12CEA20806D77000D88E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		11A12CF020806DAD000D88E7 /* QuotesNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesNavigationBar.swift; sourceTree = "<group>"; };
 		11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+QuotesColors.swift"; sourceTree = "<group>"; };
 		11CB3EBB207F0E97009EA0A5 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		11CB3EBD207F105A009EA0A5 /* UIFont+QuotesFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+QuotesFont.swift"; sourceTree = "<group>"; };
 		11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-UltraLight.otf"; sourceTree = "<group>"; };
 		11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-ExtraBold.otf"; sourceTree = "<group>"; };
 		11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-Medium.otf"; sourceTree = "<group>"; };
+		11DF173020807BA70010F4CD /* QuoteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteReviewViewController.swift; sourceTree = "<group>"; };
 		1E2527B01DAF3F2F798162EA /* Pods-quotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-quotes/Pods-quotes.release.xcconfig"; sourceTree = "<group>"; };
 		3F60B6BB48753AD634BDB7CA /* Pods-quotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quotes/Pods-quotes.debug.xcconfig"; sourceTree = "<group>"; };
 		628030424FBAC36A3AD0B6D2 /* Pods_Quotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,17 +100,6 @@
 				117F6F98207FDFEE00719311 /* QuotesUser.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		112222F5207F063500226C83 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				112222F6207F063500226C83 /* QuotesViewController.swift */,
-				112222F7207F063500226C83 /* FeedViewController.swift */,
-				11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */,
-				11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		112222F8207F063500226C83 /* Supporting Files */ = {
@@ -148,7 +141,8 @@
 				112222F4207F063500226C83 /* Model */,
 				117F6F8B207FCF0E00719311 /* Storyboards */,
 				112222F8207F063500226C83 /* Supporting Files */,
-				112222F5207F063500226C83 /* ViewControllers */,
+				11A12CE620806D77000D88E7 /* ViewControllers */,
+				11A12CEF20806D99000D88E7 /* Views */,
 			);
 			path = Quotes;
 			sourceTree = "<group>";
@@ -177,6 +171,26 @@
 				11A12CE32080597D000D88E7 /* ProfileFeedCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		11A12CE620806D77000D88E7 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11A12CE720806D77000D88E7 /* FeedViewController.swift */,
+				11A12CE820806D77000D88E7 /* ProfileViewController.swift */,
+				11A12CE920806D77000D88E7 /* QuotesViewController.swift */,
+				11A12CEA20806D77000D88E7 /* TabBarViewController.swift */,
+				11DF173020807BA70010F4CD /* QuoteReviewViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		11A12CEF20806D99000D88E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11A12CF020806DAD000D88E7 /* QuotesNavigationBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		11CB3EB8207F0E36009EA0A5 /* Extensions */ = {
@@ -362,15 +376,17 @@
 				11CB3EBA207F0E63009EA0A5 /* UIColor+QuotesColors.swift in Sources */,
 				11CB3EBE207F105A009EA0A5 /* UIFont+QuotesFont.swift in Sources */,
 				112222FD207F063500226C83 /* AppDelegate.swift in Sources */,
-				112222FC207F063500226C83 /* FeedViewController.swift in Sources */,
+				11A12CEC20806D78000D88E7 /* ProfileViewController.swift in Sources */,
+				11A12CEE20806D78000D88E7 /* TabBarViewController.swift in Sources */,
 				117F6F99207FDFEE00719311 /* QuotesUser.swift in Sources */,
+				11DF173120807BA70010F4CD /* QuoteReviewViewController.swift in Sources */,
 				11A12CD620804C6D000D88E7 /* ProfileHeaderTableViewCell.swift in Sources */,
-				11CB3EB5207F0799009EA0A5 /* ProfileViewController.swift in Sources */,
+				11A12CEB20806D78000D88E7 /* FeedViewController.swift in Sources */,
 				11A12CE42080597D000D88E7 /* ProfileFeedCollectionViewCell.swift in Sources */,
 				11A12CE0208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift in Sources */,
 				11A12CDC20804CBF000D88E7 /* ProfileQuotesTableViewCell.swift in Sources */,
-				11CB3EB7207F0A37009EA0A5 /* TabBarViewController.swift in Sources */,
-				112222FB207F063500226C83 /* QuotesViewController.swift in Sources */,
+				11A12CF120806DAD000D88E7 /* QuotesNavigationBar.swift in Sources */,
+				11A12CED20806D78000D88E7 /* QuotesViewController.swift in Sources */,
 				117F6F95207FCFBD00719311 /* FeedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

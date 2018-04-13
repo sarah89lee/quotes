@@ -20,6 +20,13 @@ class TabBarViewController: UITabBarController {
         return line
     }()
     
+    fileprivate let quotesButton: UIButton = {
+        let button: UIButton = UIButton()
+        button.setImage(UIImage(named: "quoteProcessIcon"), for: UIControlState.normal)
+        button.backgroundColor = UIColor.quotesPinkColor()
+        return button
+    }()
+    
     var centerXLayoutConstraint: NSLayoutConstraint  = NSLayoutConstraint()
 
     // MARK: - UIViewController Methods
@@ -36,6 +43,15 @@ class TabBarViewController: UITabBarController {
         
         tabBar.addSubview(selectedLine)
         
+        // setup quoteButton
+        view.addSubview(quotesButton)
+        
+        quotesButton.addTarget(
+            self,
+            action: #selector(TabBarViewController.quotesButtonTouched(_:)),
+            for: UIControlEvents.touchUpInside
+        )
+
         // first item is selected by default
         setLineFrameWithIndex(index: 1)
     }
@@ -49,6 +65,22 @@ class TabBarViewController: UITabBarController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tabBar.bringSubview(toFront: selectedLine)
+        
+        // keyWindow is nil until the view appears since we're using storyboards, so let's set the quotesButton frame here
+        let buttonSize: CGFloat = 60.0
+        quotesButton.frame = CGRect(
+            x: UIScreen.main.bounds.width/2.0 - buttonSize/2.0,
+            y: UIScreen.main.bounds.height - UIWindow.safeAreaInsets().bottom - buttonSize,
+            width: buttonSize,
+            height: buttonSize
+        )
+        quotesButton.layer.cornerRadius = buttonSize/2.0
+    }
+    
+    // MARK: -  Action Methods
+    
+    @objc func quotesButtonTouched(_ sender: AnyObject) {
+        performSegue(withIdentifier: "QuotesViewControllerSegue", sender: self)
     }
     
     // MARK: -  Private Methods
@@ -61,7 +93,7 @@ class TabBarViewController: UITabBarController {
         
         selectedLine.frame = CGRect(
             x: (tabBarItemWidth * CGFloat(index)) + (tabBarItemWidth/2.0) - (selectedLineWidth/2.0),
-            y: tabBarHeight - UIWindow.safeAreaInsets().bottom,
+            y: tabBarHeight - UIWindow.safeAreaInsets().bottom - 2.0,
             width: selectedLineWidth,
             height: 2.0
         )
@@ -84,6 +116,15 @@ extension TabBarViewController: UITabBarControllerDelegate {
                 self?.setLineFrameWithIndex(index: tappedIndex)
             }
         }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        // so we don't have to create a custom tab bar, let's disable the quotesViewController since we'll be displaying
+        // a modal instead of presenting a vc in a tab
+        if viewController.isKind(of: QuotesViewController.self) {
+            return false
+        }
+        return true
     }
 }
 
