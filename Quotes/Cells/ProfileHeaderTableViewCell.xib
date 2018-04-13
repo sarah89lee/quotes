@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-DemiBold</string>
+        </array>
+        <array key="QanelasSoftDEMO-ExtraBold.otf">
+            <string>QanelasSoftDEMO-ExtraBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="292" id="KGk-i7-Jjw" customClass="ProfileHeaderTableViewCell" customModule="Quotes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="401" height="292"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="401" height="291.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Buh-1r-LVT">
+                        <rect key="frame" x="150.5" y="97" width="100" height="100"/>
+                        <color key="backgroundColor" red="1" green="0.3921568627" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="7yP-cs-Mpj"/>
+                            <constraint firstAttribute="height" constant="100" id="smL-Eg-GVn"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SARAH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-x8-Jhs">
+                        <rect key="frame" x="169" y="41" width="63" height="26"/>
+                        <fontDescription key="fontDescription" name="QanelasSoftDEMO-ExtraBold" family="Qanelas Soft DEMO" pointSize="20"/>
+                        <color key="textColor" red="1" green="0.3921568627" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veY-KP-KTM">
+                        <rect key="frame" x="140.5" y="217" width="120" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="nnf-bZ-1jO"/>
+                            <constraint firstAttribute="height" constant="40" id="yYb-hq-Xnt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                        <state key="normal" title="Logout">
+                            <color key="titleColor" red="1" green="0.3921568627" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="bdD-x8-Jhs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="8UE-R4-z0I"/>
+                    <constraint firstItem="Buh-1r-LVT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kkf-Cn-rzI"/>
+                    <constraint firstItem="veY-KP-KTM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kpY-IQ-g7t"/>
+                    <constraint firstItem="veY-KP-KTM" firstAttribute="top" secondItem="Buh-1r-LVT" secondAttribute="bottom" constant="20" id="nlo-HX-NKH"/>
+                    <constraint firstItem="bdD-x8-Jhs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="30" id="rhE-mu-72y"/>
+                    <constraint firstItem="Buh-1r-LVT" firstAttribute="top" secondItem="bdD-x8-Jhs" secondAttribute="bottom" constant="30" id="slK-FT-J4z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="avatarImageView" destination="Buh-1r-LVT" id="jmr-HH-FMh"/>
+                <outlet property="logoutButton" destination="veY-KP-KTM" id="Q8p-q6-nJE"/>
+                <outlet property="nameLabel" destination="bdD-x8-Jhs" id="vgu-k4-orX"/>
+            </connections>
+            <point key="canvasLocation" x="-28.5" y="50"/>
+        </tableViewCell>
+    </objects>
+</document>

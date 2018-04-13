@@ -67,7 +67,7 @@ class FeedTableViewCell: UITableViewCell {
                     NSAttributedStringKey.link : user.userId,
                     NSAttributedStringKey.font : UIFont.extraBoldFont(size: 14.0),
                     NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue,
-                    NSAttributedStringKey.underlineColor : UIColor.clear
+                    NSAttributedStringKey.underlineColor : UIColor.black
                 ]
             )
 

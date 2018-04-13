@@ -13,4 +13,8 @@ extension UIColor {
     class func quotesPinkColor() -> UIColor {
         return UIColor(hex: "#ff646c")
     }
+    
+    class func lightGrayColor() -> UIColor {
+        return UIColor(hex: "#AAAAAA")
+    }
 }
