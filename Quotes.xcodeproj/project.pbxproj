@@ -26,6 +26,8 @@
 		11A12CDD20804CBF000D88E7 /* ProfileQuotesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A12CDB20804CBF000D88E7 /* ProfileQuotesTableViewCell.xib */; };
 		11A12CE0208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CDE208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift */; };
 		11A12CE1208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A12CDF208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib */; };
+		11A12CE42080597D000D88E7 /* ProfileFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CE22080597D000D88E7 /* ProfileFeedCollectionViewCell.swift */; };
+		11A12CE52080597D000D88E7 /* ProfileFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A12CE32080597D000D88E7 /* ProfileFeedCollectionViewCell.xib */; };
 		11CB3EB5207F0799009EA0A5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */; };
 		11CB3EB7207F0A37009EA0A5 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */; };
 		11CB3EBA207F0E63009EA0A5 /* UIColor+QuotesColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */; };
@@ -58,6 +60,8 @@
 		11A12CDB20804CBF000D88E7 /* ProfileQuotesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileQuotesTableViewCell.xib; sourceTree = "<group>"; };
 		11A12CDE208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQuotesSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		11A12CDF208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileQuotesSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		11A12CE22080597D000D88E7 /* ProfileFeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeedCollectionViewCell.swift; sourceTree = "<group>"; };
+		11A12CE32080597D000D88E7 /* ProfileFeedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileFeedCollectionViewCell.xib; sourceTree = "<group>"; };
 		11CB3EB4207F0799009EA0A5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		11CB3EB6207F0A37009EA0A5 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		11CB3EB9207F0E63009EA0A5 /* UIColor+QuotesColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+QuotesColors.swift"; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 				11A12CDB20804CBF000D88E7 /* ProfileQuotesTableViewCell.xib */,
 				11A12CDE208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift */,
 				11A12CDF208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib */,
+				11A12CE22080597D000D88E7 /* ProfileFeedCollectionViewCell.swift */,
+				11A12CE32080597D000D88E7 /* ProfileFeedCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 				11A12CDD20804CBF000D88E7 /* ProfileQuotesTableViewCell.xib in Resources */,
 				117F6F90207FCF0E00719311 /* LaunchScreen.storyboard in Resources */,
 				11CB3EC2207F12A7009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf in Resources */,
+				11A12CE52080597D000D88E7 /* ProfileFeedCollectionViewCell.xib in Resources */,
 				11CB3EC3207F12A9009EA0A5 /* QanelasSoftDEMO-UltraLight.otf in Resources */,
 				11CB3EC4207F12AB009EA0A5 /* QanelasSoftDEMO-Medium.otf in Resources */,
 				117F6F96207FCFBD00719311 /* FeedTableViewCell.xib in Resources */,
@@ -359,6 +366,7 @@
 				117F6F99207FDFEE00719311 /* QuotesUser.swift in Sources */,
 				11A12CD620804C6D000D88E7 /* ProfileHeaderTableViewCell.swift in Sources */,
 				11CB3EB5207F0799009EA0A5 /* ProfileViewController.swift in Sources */,
+				11A12CE42080597D000D88E7 /* ProfileFeedCollectionViewCell.swift in Sources */,
 				11A12CE0208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift in Sources */,
 				11A12CDC20804CBF000D88E7 /* ProfileQuotesTableViewCell.swift in Sources */,
 				11CB3EB7207F0A37009EA0A5 /* TabBarViewController.swift in Sources */,

@@ -8,10 +8,16 @@
 
 import UIKit
 
+@objc protocol ProfileQuotesSelectionTableViewCellDelegate {
+    func saidByTabSelected()
+    func heardByTabSelected()
+}
+
 class ProfileQuotesSelectionTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     
+    weak var delegate: ProfileQuotesSelectionTableViewCellDelegate?
     @IBOutlet weak var saidByButton: UIButton!
     @IBOutlet weak var heardByButton: UIButton!
     
@@ -35,10 +41,14 @@ class ProfileQuotesSelectionTableViewCell: UITableViewCell {
     @IBAction func saidByButtonTouched(_ sender: Any) {
         saidByButton.isSelected = true
         heardByButton.isSelected = false
+        
+        delegate?.saidByTabSelected()
     }
  
     @IBAction func heardByButtonTouched(_ sender: Any) {
         saidByButton.isSelected = false
         heardByButton.isSelected = true
+        
+        delegate?.heardByTabSelected()
     }
 }

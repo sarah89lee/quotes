@@ -12,6 +12,8 @@ class TabBarViewController: UITabBarController {
     
     // MARK: - Properties
     
+    static let tabBarHeight: CGFloat = 50.0
+    
     fileprivate let selectedLine: UIView = {
         let line: UIView = UIView()
         line.backgroundColor = UIColor.quotesPinkColor()

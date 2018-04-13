@@ -54,7 +54,9 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+        if let cell = cell as? ProfileQuotesSelectionTableViewCell {
+            cell.delegate = self
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -65,7 +67,7 @@ extension ProfileViewController: UITableViewDelegate {
         } else if indexPath.row == ProfileViewControllerSectionTypes.Selection.rawValue {
             return selectionHeight
         } else if indexPath.row == ProfileViewControllerSectionTypes.Feed.rawValue {
-            return view.bounds.height - headerHeight - selectionHeight
+            return view.bounds.height - headerHeight - selectionHeight - TabBarViewController.tabBarHeight - UIWindow.safeAreaInsets().bottom - UIWindow.safeAreaInsets().top
         }
         return 0
     }
@@ -82,7 +84,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,5 +97,26 @@ extension ProfileViewController: UITableViewDataSource {
             cell = tableView.dequeueReusableCell(withIdentifier: "ProfileQuotesTableViewCell", for: indexPath) as! ProfileQuotesTableViewCell
         }
         return cell
+    }
+}
+
+// MARK: -
+
+extension ProfileViewController: ProfileQuotesSelectionTableViewCellDelegate {
+
+    // MARK: - ProfileQuotesSelectionTableViewCellDelegate Methods
+    
+    func saidByTabSelected() {
+        let indexPath: IndexPath = IndexPath(row: ProfileViewControllerSectionTypes.Feed.rawValue, section: 0)
+        if let cell = tableView.cellForRow(at: indexPath) as? ProfileQuotesTableViewCell {
+            cell.selectCollectionViewIndex(index: ProfileQuotesTableViewCellType.SaidBy.rawValue)
+        }
+    }
+    
+    func heardByTabSelected() {
+        let indexPath: IndexPath = IndexPath(row: ProfileViewControllerSectionTypes.Feed.rawValue, section: 0)
+        if let cell = tableView.cellForRow(at: indexPath) as? ProfileQuotesTableViewCell {
+            cell.selectCollectionViewIndex(index: ProfileQuotesTableViewCellType.HeardBy.rawValue)
+        }
     }
 }
