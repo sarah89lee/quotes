@@ -169,12 +169,15 @@
                                     <constraint firstItem="fxC-xg-ZZI" firstAttribute="leading" secondItem="e3f-3i-AIV" secondAttribute="leading" constant="20" id="nsU-Ep-dld"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="This is a quote" translatesAutoresizingMaskIntoConstraints="NO" id="NpK-Oc-FFY">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NpK-Oc-FFY">
                                 <rect key="frame" x="20" y="20" width="335" height="484"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="19"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="80l-fP-fcu" id="9Sj-00-Qn1"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" red="0.92549019607843142" green="0.32549019607843138" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,6 +199,7 @@
                     <navigationItem key="navigationItem" id="hTy-J0-zEK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="counterLabel" destination="fxC-xg-ZZI" id="Bn4-1w-FI3"/>
                         <outlet property="quoteItViewBottomConstraint" destination="5K2-bw-lCd" id="lyI-lH-vzl"/>
                         <outlet property="textView" destination="NpK-Oc-FFY" id="2MB-6h-c5v"/>
                     </connections>
@@ -235,12 +239,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kWT-BW-khW"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.41960784309999999" blue="0.43529411759999997" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="saidByTextFieldDidBeginEditing:" destination="1sD-GQ-4de" eventType="editingDidBegin" id="fdf-Jf-f0z"/>
                                     <action selector="saidByTextFieldTouched:" destination="1sD-GQ-4de" eventType="touchUpInside" id="Zkk-cB-4WM"/>
+                                    <action selector="textFieldDidChange:" destination="1sD-GQ-4de" eventType="editingChanged" id="qrG-Zc-y74"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="One or more your phone contacts..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ecp-YJ-eQn">
@@ -248,9 +253,13 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="SPN-Id-Ilp"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.41960784309999999" blue="0.43529411759999997" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="heardByTextFieldDidBeginEditing:" destination="1sD-GQ-4de" eventType="editingDidBegin" id="5oP-ds-8P6"/>
+                                    <action selector="textFieldDidChange:" destination="1sD-GQ-4de" eventType="editingChanged" id="fld-g0-e3I"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="MM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="brp-k8-rNO">
                                 <rect key="frame" x="106" y="140" width="70" height="40"/>
@@ -260,9 +269,12 @@
                                     <constraint firstAttribute="height" constant="40" id="YYW-F5-km6"/>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="kby-Cj-vs3"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.41960784309999999" blue="0.43529411759999997" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="1sD-GQ-4de" eventType="editingChanged" id="Gv5-ex-5Bt"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="YYYY" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yey-L6-AQk">
                                 <rect key="frame" x="285" y="140" width="70" height="40"/>
@@ -271,9 +283,12 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="79U-hN-paW"/>
                                     <constraint firstAttribute="height" constant="40" id="iN8-cB-BxR"/>
                                 </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.41960784309999999" blue="0.43529411759999997" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDidChange:" destination="1sD-GQ-4de" eventType="editingChanged" id="xTp-CK-yh5"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u2Y-6B-zlY">
                                 <rect key="frame" x="176" y="140" width="109" height="41"/>
@@ -286,9 +301,12 @@
                                             <constraint firstAttribute="height" constant="40" id="Oqt-a1-EP7"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="rSY-tk-G3c"/>
                                         </constraints>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.94901960780000005" green="0.41960784309999999" blue="0.43529411759999997" alpha="1" colorSpace="deviceRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="textFieldDidChange:" destination="1sD-GQ-4de" eventType="editingChanged" id="LH8-t3-xsA"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

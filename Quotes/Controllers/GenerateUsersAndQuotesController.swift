@@ -43,6 +43,34 @@ class GenerateUsersAndQuotesController: NSObject {
         }
     }
     
+    func createQuote(quote: String, saidById: String, heardByIds: [String], date: String) {
+        HUD.show(.progress)
+        
+        // if we have quotes already, let's clear the array since we're fetching them again
+        quotes.removeAll()
+        
+        databaseReference.child("quotes").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            let value = [
+                "quote" : quote,
+                "date" : date,
+                "saidBy" : saidById,
+                "heardBy" : heardByIds
+                ] as [String : Any]
+            
+            let autoId = strongSelf.databaseReference.childByAutoId()
+            strongSelf.databaseReference.child("quotes").child(autoId.key).setValue(value)
+            
+            // let's store the id so we can easily retrive the quote object to attach the users to later
+            strongSelf.quotesDictionary[quote] = autoId.key
+
+            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
+        })
+    }
+    
     func getLoggedInUsersQuotes() -> [Quote] {
         let combinedArray = getLoggedInUserSaidByQuotes() + getLoggedInUserHeardByQuotes()
         return combinedArray.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
@@ -77,11 +105,9 @@ class GenerateUsersAndQuotesController: NSObject {
     
     func getQuotes() {
         // if we have quotes already, let's clear the array since we're fetching them again
-        if quotes.count > 0 {
-            quotes.removeAll()
-        }
-        
-        databaseReference.child("quotes").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+        quotes.removeAll()
+
+        databaseReference.child("quotes").observe(.value, with: { [weak self] snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
                 if let dict = rest.value as? NSDictionary,
@@ -104,7 +130,7 @@ class GenerateUsersAndQuotesController: NSObject {
             users.removeAll()
         }
         
-        databaseReference.child("users").observeSingleEvent(of: .value, with: { [weak self] snapshot in
+        databaseReference.child("users").observe(.value, with: { [weak self] snapshot in
             let enumerator = snapshot.children
             while let rest = enumerator.nextObject() as? DataSnapshot {
                 if let dict = rest.value as? NSDictionary,

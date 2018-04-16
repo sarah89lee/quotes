@@ -12,8 +12,13 @@ class QuotesViewController: UIViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var counterLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var quoteItViewBottomConstraint: NSLayoutConstraint!
+    
+    static let maxCharacterCount: Int = 115
+    
+    fileprivate var counter: Int = 115
     
     fileprivate let titleLabel: UILabel = {
         let label: UILabel = UILabel()
@@ -35,6 +40,8 @@ class QuotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        textView.delegate = self
         
         cancelButton.addTarget(
             self,
@@ -81,6 +88,12 @@ class QuotesViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let quoteReviewViewController = segue.destination as? QuoteReviewViewController {
+            quoteReviewViewController.quote = textView.text
+        }
+    }
+    
     // MARK: - Action Methods
     
     @objc func cancelButtonTouched(_ sender: AnyObject) {
@@ -111,6 +124,25 @@ class QuotesViewController: UIViewController {
         UIView.animate(withDuration: 0.2) { [weak self] in
             self?.quoteItViewBottomConstraint.constant = UIWindow.safeAreaInsets().bottom
         }
+    }
+}
+
+// MARK: -
+
+extension QuotesViewController: UITextViewDelegate {
+    
+    // MARK: - UITextViewDelegate Methods
+    
+    func textViewDidChange(_ textView: UITextView) {
+        counter = QuotesViewController.maxCharacterCount - textView.text.count
+        counterLabel.text = "\(counter)"
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if counter == 0 && text.isEmpty {
+            return true
+        }
+        return counter > 0
     }
 }
 

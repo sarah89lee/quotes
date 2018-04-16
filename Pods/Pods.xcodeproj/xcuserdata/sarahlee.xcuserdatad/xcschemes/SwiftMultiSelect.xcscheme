@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D59363003475926B539A46B2AAEF5F48"
-               BlueprintName = "SwiftyContacts"
+               BlueprintIdentifier = "192312A60367F4F869BCB3B919EA4E8B"
+               BlueprintName = "SwiftMultiSelect"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SwiftyContacts.framework">
+               BuildableName = "SwiftMultiSelect.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

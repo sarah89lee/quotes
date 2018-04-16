@@ -57,6 +57,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - PKHUD (5.0.0)
+  - SwiftMultiSelect (0.2.4)
   - SwiftyContacts (3.0.10):
     - SwiftyContacts/Core (= 3.0.10)
   - SwiftyContacts/Core (3.0.10)
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - MagicalRecord
   - PKHUD (~> 5.0)
+  - SwiftMultiSelect
   - SwiftyContacts
   - SwiftyJSON (~> 4.0.0)
 
@@ -91,6 +93,7 @@ SPEC REPOS:
     - MagicalRecord
     - nanopb
     - PKHUD
+    - SwiftMultiSelect
     - SwiftyContacts
     - SwiftyJSON
 
@@ -110,9 +113,10 @@ SPEC CHECKSUMS:
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  SwiftMultiSelect: 50e4c628935492d30d3c45ab88901502c3eb52f4
   SwiftyContacts: bf0d085f22f1c30911093fb519927e198ddae1d6
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 801ae6569d0dccdb29661d44106096c8079429cd
+PODFILE CHECKSUM: 433069b5d35b2729214fb3b97f808c7cc986de88
 
 COCOAPODS: 1.5.0
