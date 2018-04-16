@@ -6,6 +6,8 @@
 //  Copyright © 2018 Sarah Lee. All rights reserved.
 //
 
+import Foundation
+
 extension Date {
     
     func toString(dateFormat: String) -> String {
