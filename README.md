@@ -1,3 +1,16 @@
+## NOTES
+- Only tested on iPhone X iOS 11.3
+- Must run on an actual device since we are using the phone's contacts to mock data.
+
+## TL;DR
+- User login is just taking in a phoneNumber so we can detect who the loggedInUser is from the phone’s contacts
+- Data is mocked by creating a user object for every contact that has a first and last name. 
+- Quotes are generated from a json file found on GitHub
+- Dates are randomly generated
+- Data is stored on Google Firebase
+- Quotes are sent to Firebase and Feed is updated with new quote.
+- Contacts library was found on Github and does not display properly on an iPhone X. Also, it is not sorted.
+
 ## TODO
 - Caching feed
   - Loading the feed is really slow since it pulls in the all quotes and users from the database on every launch. 
@@ -12,16 +25,11 @@
   - Valiate all text fields are correct: phone numbers, passwords, month, year, day.
 - Presenting User Profiles
   - An idea response from the server will return Quotes with User objects, which will make presenting user profiles easier. Right now the mock data is created for the purpose of displaying data quickly for the assignment. NOT THE BEST. 
- - GenerateUsersAndQuotesController
-  - This class is bloated, but is just used to mock data.
+- GenerateUsersAndQuotesController
+  - This class is bloated, but is just used to mock data. 
 
-## TL;DR
-- User login is just taking in a phoneNumber so we can detect who the loggedInUser is from the phone’s contacts
-- Data is mocked by creating a user object for every contact that has a first and last name. 
-- Quotes are generated from a json file found on GitHub
-- Dates are randomly generated
-- Data is stored on Google Firebase
-- Quotes are sent to Firebase and Feed to updated with new quote.
+## DESIGN CHANGES
+- Since the Quotes button displays a modal and is not an actual tab, I made it into a button that hovers over the tab bar instead. See screenshot below.
 
 ## SCREENSHOTS
 ![feed](https://github.com/sarah89lee/quotes/blob/34ddf15b683dac1f8e062911188e60a43faa387a/Quotes/Supporting%20Files/Screenshots/Feed.PNG) ![profile](https://github.com/sarah89lee/quotes/blob/34ddf15b683dac1f8e062911188e60a43faa387a/Quotes/Supporting%20Files/Screenshots/Profile.PNG) ![search](https://github.com/sarah89lee/quotes/blob/34ddf15b683dac1f8e062911188e60a43faa387a/Quotes/Supporting%20Files/Screenshots/Search.PNG) ![quote](https://github.com/sarah89lee/quotes/blob/34ddf15b683dac1f8e062911188e60a43faa387a/Quotes/Supporting%20Files/Screenshots/Quote.PNG) ![review](https://github.com/sarah89lee/quotes/blob/34ddf15b683dac1f8e062911188e60a43faa387a/Quotes/Supporting%20Files/Screenshots/Review.PNG)
