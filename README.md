@@ -1,4 +1,6 @@
 ## TODO
+- Caching feed
+  - Loading the feed is really slow since it pulls in the all quotes and users from the database on every launch. 
 - Feed Pagination
   - The feed should only load x amount from the server and check for hasMore as the user scrolls. If hasMore == true, load the next batch before the user reaches the bottom
 - User Authentication
