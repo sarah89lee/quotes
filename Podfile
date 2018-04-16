@@ -9,7 +9,12 @@ target 'Quotes' do
     pod 'Alamofire', '~> 4.6'
     pod 'SwiftyJSON', '~> 4.0.0'
     pod 'Alamofire-SwiftyJSON', '~> 3.0.0'
-
     pod 'PKHUD', '~> 5.0'
+    pod 'SwiftyContacts'
+    pod 'MagicalRecord'
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
 
 end

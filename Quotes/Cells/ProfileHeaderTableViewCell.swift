@@ -26,5 +26,13 @@ class ProfileHeaderTableViewCell: UITableViewCell {
         
         avatarImageView.layer.cornerRadius = 50.0
     }
+    
+    // MARK: - Public Methods
+    
+    func setUserImage(image: UIImage) {
+        avatarImageView.image = image
+        avatarImageView.layer.cornerRadius = 50.0
+        avatarImageView.layer.masksToBounds = true
+    }
 
 }

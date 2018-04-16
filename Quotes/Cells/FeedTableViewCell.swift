@@ -22,6 +22,7 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var heardByLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var quoteHeightConstraint: NSLayoutConstraint!
     
     // MARK: - UIView Methods
     
@@ -30,11 +31,29 @@ class FeedTableViewCell: UITableViewCell {
         avatarImageView.layer.cornerRadius = 20.0
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarImageView.image = nil
+    }
+    
     // MARK: - Public Methods
+    
+    func setUserImage(image: UIImage) {
+        avatarImageView.image = image
+        avatarImageView.layer.cornerRadius = 20.0
+        avatarImageView.layer.masksToBounds = true
+    }
+    
+    func setUserName(name: String) {
+        nameButton.setTitle(name, for: UIControlState.normal)
+    }
     
     func setQuote(quote: String) {
         let rightAttachment = NSTextAttachment()
         rightAttachment.image = UIImage(named: "rightQuotations")
+
+        let mutableParagraphStyle = NSMutableParagraphStyle()
+        mutableParagraphStyle.lineBreakMode = NSLineBreakMode.byWordWrapping
 
         let rightAttachmentString = NSAttributedString(attachment: rightAttachment)
         let quoteString = NSMutableAttributedString(string: quote)
@@ -43,22 +62,24 @@ class FeedTableViewCell: UITableViewCell {
         mutableQuoteString.append(NSAttributedString(string: " "))
         mutableQuoteString.append(rightAttachmentString)
         
+        mutableQuoteString.addAttributes([NSAttributedStringKey.paragraphStyle: mutableParagraphStyle], range: NSMakeRange(0, quote.count))
+        
         quoteLabel.attributedText = mutableQuoteString
         
-        let testData = [
-            User(userId: "1", fullName: "Robert Smith"),
-            User(userId: "2", fullName: "Bilbo Baggins"),
-            User(userId: "3", fullName: "Luke Skywalker")
-        ]
-        
-        setHeardByNames(names: testData)
+        let rect = mutableQuoteString.boundingRect(
+            with: CGSize(width: 120, height: CGFloat.greatestFiniteMagnitude),
+            options: NSStringDrawingOptions.usesLineFragmentOrigin,
+            context: nil
+        )
+
+        quoteHeightConstraint.constant = rect.height
     }
     
-    func setHeardByNames(names: [User]) {
+    func setHeardByNames(names: [QuotesUser]) {
         let quoteString = NSMutableAttributedString(string: "Heard By: ")
         
         for i in 0..<names.count {
-            let user: User = names[i]
+            let user: QuotesUser = names[i]
 
             let attributedString = NSAttributedString(
                 string: user.fullName,

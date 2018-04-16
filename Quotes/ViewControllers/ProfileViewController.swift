@@ -41,6 +41,37 @@ class ProfileViewController: UIViewController {
         
         tableView.layoutMargins = UIEdgeInsets.zero
     }
+    
+    // MARK: - Action Methods
+    
+    @objc func logoutButtonTouched(_ sender: AnyObject) {
+        let noAction = UIAlertAction(
+            title: "No",
+            style: .cancel,
+            handler: nil
+        )
+        
+        let yesAction = UIAlertAction(
+            title: "Yes",
+            style: .default,
+            handler: { [weak self] action in
+                Config.setLoggedInUser(user: nil)
+                Config.setLoggedInUserPhoneNumber(phoneNumber: nil)
+                Config.setLoggedInUserImage(image: nil)
+                Config.setLoggedInUserId(userId: nil)
+                if let strongSelf = self {
+                    StartUpController.checkUserAuthentication(viewController: strongSelf)
+                    strongSelf.tableView.reloadData()
+                }
+            }
+        )
+        
+        UIAlertController.showAlert(
+            title: "Are you sure you want to logout?",
+            message: "",
+            actions: [noAction, yesAction]
+        )
+    }
 }
 
 // MARK: -
@@ -56,6 +87,19 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? ProfileQuotesSelectionTableViewCell {
             cell.delegate = self
+        }
+        
+        if let cell = cell as? ProfileHeaderTableViewCell {
+            if let image = Config.getLoggedInUserImage() {
+                cell.setUserImage(image: image)
+            }
+            cell.nameLabel.text = Config.getLoggedInUser()?.fullName
+            
+            cell.logoutButton.addTarget(
+                self,
+                action: #selector(ProfileViewController.logoutButtonTouched(_:)),
+                for: UIControlEvents.touchUpInside
+            )
         }
     }
     

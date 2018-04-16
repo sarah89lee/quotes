@@ -12,6 +12,13 @@ class QuoteReviewViewController: UIViewController {
     
     // MARK: - Properties
     
+    @IBOutlet weak var saidTextField: UITextField!
+    @IBOutlet weak var heardTextField: UITextField!
+    @IBOutlet weak var monthTextField: UITextField!
+    @IBOutlet weak var dayTextField: UITextField!
+    @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var successQuoteLabel: UILabel!
+    
     fileprivate let reviewNavigationBar: QuotesNavigationBar = QuotesNavigationBar()
     
     fileprivate let backButton: UIButton = {

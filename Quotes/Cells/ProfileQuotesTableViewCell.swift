@@ -92,6 +92,20 @@ extension ProfileQuotesTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileFeedCollectionViewCell", for: indexPath) as! ProfileFeedCollectionViewCell
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        guard let generateUsersAndQuotesController = appDelegate.generateUsersAndQuotesController else {
+            return cell
+        }
+        
+        if indexPath.row == ProfileQuotesTableViewCellType.SaidBy.rawValue {
+            cell.quotesDatasource = generateUsersAndQuotesController.getLoggedInUserSaidByQuotes()
+        } else {
+            cell.quotesDatasource = generateUsersAndQuotesController.getLoggedInUserHeardByQuotes()
+        }
+        
+        cell.tableView.reloadData()
+        
         return cell
     }
     

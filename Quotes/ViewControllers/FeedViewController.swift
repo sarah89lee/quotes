@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PKHUD
 
 class FeedViewController: UIViewController {
     
@@ -16,6 +17,8 @@ class FeedViewController: UIViewController {
     
     fileprivate lazy var searchBar = UISearchBar(frame: CGRect.zero)
 
+    fileprivate var searchView: SearchView!
+
     fileprivate let searchButton: UIButton = {
         let button: UIButton = UIButton()
         button.setImage(UIImage(named: "SearchIcon"), for: UIControlState.normal)
@@ -23,10 +26,25 @@ class FeedViewController: UIViewController {
         return button
     }()
     
+    fileprivate var quotesDatasource: [Quote] = [Quote]()
+    fileprivate var quotesUsers: [QuotesUser] {
+        get {
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            let users = appDelegate.generateUsersAndQuotesController?.users ?? [QuotesUser]()
+            return users
+        }
+    }
+    
     // MARK: - UIViewController Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchView = UINib(nibName: "SearchView", bundle: nil).instantiate(withOwner: self, options: nil).first as! SearchView
+        searchView.translatesAutoresizingMaskIntoConstraints = false
+        searchView.isHidden = true
+        view.addSubview(searchView)
+        searchView.pinToAllSidesOfParent()
         
         tableView.register(UINib(nibName: "FeedTableViewCell", bundle: nil), forCellReuseIdentifier: "FeedTableViewCell")
         tableView.layoutMargins = UIEdgeInsets.zero
@@ -51,9 +69,20 @@ class FeedViewController: UIViewController {
         let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideUISearchBar?.textColor = UIColor.black
         textFieldInsideUISearchBar?.font = UIFont.mediumFont(size: 12.0)
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleQuotesGeneratedNotification(_:)),
+            name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION),
+            object: nil
+        )
     }
     
-    // MARK: - Private Methods12
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - Private Methods
     
     fileprivate func setNavigationBarTitleAndSearch() {
         if let navigationController = navigationController,
@@ -85,11 +114,23 @@ class FeedViewController: UIViewController {
                 state: UIControlState.normal
             )
             self?.searchBar.delegate = self
-            self?.searchBar.placeholder = "Search who said ir or who heard it"
+            self?.searchBar.placeholder = "Search who said it or who heard it"
             self?.searchBar.setShowsCancelButton(true, animated: true)
             self?.searchBar.becomeFirstResponder()
+            self?.searchView.isHidden = false
             
             topItem.titleView = self?.searchBar
+        }
+    }
+    
+    // MARK: - NSNotificationCenter Observer Methods
+    
+    @objc func handleQuotesGeneratedNotification(_ notification: Notification) {
+        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        if let generateUsersAndQuotesController = appDelegate.generateUsersAndQuotesController {
+            quotesDatasource = generateUsersAndQuotesController.getLoggedInUsersQuotes()
+            tableView.reloadData()
         }
     }
 }
@@ -103,6 +144,7 @@ extension FeedViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         UIView.animate(withDuration: 0.2, animations: { [weak self] in
             self?.searchBar.alpha = 0.0
+            self?.searchView.isHidden = true
         }) { [weak self] (finished) in
             guard let strongSelf = self else {
                 return
@@ -110,6 +152,10 @@ extension FeedViewController: UISearchBarDelegate {
             
             strongSelf.setNavigationBarTitleAndSearch()
         }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchView.searchQuoteUser(searchTerm: searchText)
     }
 }
 
@@ -124,12 +170,35 @@ extension FeedViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-
+        if let cell = cell as? FeedTableViewCell {
+            let quote = quotesDatasource[indexPath.row]
+            let saidByUser: [QuotesUser] = quotesUsers.filter{ $0.userId == quote.saidByUserId }
+            let heardByUsers: [QuotesUser] = quotesUsers.filter{ quote.heardByUserIds.contains($0.userId) }
+            if saidByUser.count > 0 {
+                cell.setUserName(name: saidByUser[0].fullName)
+                cell.setQuote(quote: quotesDatasource[indexPath.row].quote)
+                cell.setHeardByNames(names: heardByUsers)
+                cell.dateLabel.text = quote.date.toString(dateFormat: "dd-MMM-yyyy")
+                
+                if let image = saidByUser[0].image {
+                    cell.setUserImage(image: image)
+                }
+                
+                // we finally have data! let's hid the hud
+                HUD.hide()
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let defaultCellHeight: CGFloat = 150.0
-        return defaultCellHeight
+        let defaultCellHeight: CGFloat = 100.0
+        let rect = quotesDatasource[indexPath.row].quote.boundingRect(
+            with: CGSize(width: 120, height: CGFloat.greatestFiniteMagnitude),
+            options: NSStringDrawingOptions.usesLineFragmentOrigin,
+            context: nil
+        )
+        
+        return defaultCellHeight + rect.height
     }
 }
 
@@ -144,12 +213,13 @@ extension FeedViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        // sometimes the quotes return before the user, so let's make sure we have users first before
+        // we display the cell, otherwise you will see the temporary cell labels and that is not pretty
+        return quotesUsers.count > 0 ? quotesDatasource.count : 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FeedTableViewCell", for: indexPath) as! FeedTableViewCell
-        cell.setQuote(quote: "Everything happens for a reason. Testing long quote blah blah blah")
         return cell
     }
 }

@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0996C03F7532CF4CD311A55B /* Pods_quotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F23719A438E313571830AF47 /* Pods_quotes.framework */; };
 		112222FD207F063500226C83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112222F9207F063500226C83 /* AppDelegate.swift */; };
 		112222FE207F063500226C83 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112222FA207F063500226C83 /* Info.plist */; };
 		11489050207F008000F633D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1148904F207F008000F633D3 /* Assets.xcassets */; };
+		116B68E62082D37A00A4C149 /* GenerateUsersAndQuotesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116B68E52082D37A00A4C149 /* GenerateUsersAndQuotesController.swift */; };
+		116B69232082FB0700A4C149 /* QuotesHTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116B69222082FB0700A4C149 /* QuotesHTTP.swift */; };
+		116B692520831CCA00A4C149 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 116B692420831CCA00A4C149 /* GoogleService-Info.plist */; };
+		116B692720831F3F00A4C149 /* Quote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116B692620831F3F00A4C149 /* Quote.swift */; };
 		117F6F88207F190100719311 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F6F87207F190100719311 /* UIView+Autolayout.swift */; };
 		117F6F8A207F307D00719311 /* UIWindow+SafeAreaInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F6F89207F307D00719311 /* UIWindow+SafeAreaInsets.swift */; };
 		117F6F90207FCF0E00719311 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 117F6F8C207FCF0E00719311 /* LaunchScreen.storyboard */; };
@@ -18,6 +21,8 @@
 		117F6F95207FCFBD00719311 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F6F93207FCFBD00719311 /* FeedTableViewCell.swift */; };
 		117F6F96207FCFBD00719311 /* FeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117F6F94207FCFBD00719311 /* FeedTableViewCell.xib */; };
 		117F6F99207FDFEE00719311 /* QuotesUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117F6F98207FDFEE00719311 /* QuotesUser.swift */; };
+		119FAF492084394C00FB1A93 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119FAF482084394C00FB1A93 /* SearchView.swift */; };
+		119FAF4B2084396200FB1A93 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 119FAF4A2084396200FB1A93 /* SearchView.xib */; };
 		11A12CD620804C6D000D88E7 /* ProfileHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CD420804C6D000D88E7 /* ProfileHeaderTableViewCell.swift */; };
 		11A12CD720804C6D000D88E7 /* ProfileHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A12CD520804C6D000D88E7 /* ProfileHeaderTableViewCell.xib */; };
 		11A12CDC20804CBF000D88E7 /* ProfileQuotesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A12CDA20804CBF000D88E7 /* ProfileQuotesTableViewCell.swift */; };
@@ -38,6 +43,12 @@
 		11CB3EC3207F12A9009EA0A5 /* QanelasSoftDEMO-UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */; };
 		11CB3EC4207F12AB009EA0A5 /* QanelasSoftDEMO-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */; };
 		11DF173120807BA70010F4CD /* QuoteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF173020807BA70010F4CD /* QuoteReviewViewController.swift */; };
+		11E24EE52083E7E7000B288E /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E24EE42083E7E7000B288E /* Config.swift */; };
+		11E24EE72083EA87000B288E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E24EE62083EA87000B288E /* LoginViewController.swift */; };
+		11E24EE92083EAF6000B288E /* StartUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E24EE82083EAF6000B288E /* StartUpController.swift */; };
+		11E24EEC20840AC0000B288E /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E24EEB20840AC0000B288E /* Date+String.swift */; };
+		11FCB35020840B94005D5049 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCB34F20840B94005D5049 /* String+Date.swift */; };
+		11FCB35220842D3A005D5049 /* UIAlertController+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCB35120842D3A005D5049 /* UIAlertController+Show.swift */; };
 		F02014710779A6CC1EEF9571 /* Pods_Quotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 628030424FBAC36A3AD0B6D2 /* Pods_Quotes.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +58,11 @@
 		112222FA207F063500226C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/sarahlee/Documents/quotes/quotes/Supporting Files/Info.plist"; sourceTree = "<absolute>"; };
 		11489043207F008000F633D3 /* Quotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1148904F207F008000F633D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		116B68E52082D37A00A4C149 /* GenerateUsersAndQuotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUsersAndQuotesController.swift; sourceTree = "<group>"; };
+		116B691E2082F23C00A4C149 /* Quotes-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Quotes-Bridging-Header.h"; sourceTree = "<group>"; };
+		116B69222082FB0700A4C149 /* QuotesHTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesHTTP.swift; sourceTree = "<group>"; };
+		116B692420831CCA00A4C149 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		116B692620831F3F00A4C149 /* Quote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quote.swift; sourceTree = "<group>"; };
 		117F6F87207F190100719311 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		117F6F89207F307D00719311 /* UIWindow+SafeAreaInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+SafeAreaInsets.swift"; sourceTree = "<group>"; };
 		117F6F8D207FCF0E00719311 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,6 +70,8 @@
 		117F6F93207FCFBD00719311 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		117F6F94207FCFBD00719311 /* FeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewCell.xib; sourceTree = "<group>"; };
 		117F6F98207FDFEE00719311 /* QuotesUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotesUser.swift; sourceTree = "<group>"; };
+		119FAF482084394C00FB1A93 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		119FAF4A2084396200FB1A93 /* SearchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchView.xib; sourceTree = "<group>"; };
 		11A12CD420804C6D000D88E7 /* ProfileHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		11A12CD520804C6D000D88E7 /* ProfileHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		11A12CDA20804CBF000D88E7 /* ProfileQuotesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileQuotesTableViewCell.swift; sourceTree = "<group>"; };
@@ -74,6 +92,12 @@
 		11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-ExtraBold.otf"; sourceTree = "<group>"; };
 		11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "QanelasSoftDEMO-Medium.otf"; sourceTree = "<group>"; };
 		11DF173020807BA70010F4CD /* QuoteReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteReviewViewController.swift; sourceTree = "<group>"; };
+		11E24EE42083E7E7000B288E /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		11E24EE62083EA87000B288E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		11E24EE82083EAF6000B288E /* StartUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpController.swift; sourceTree = "<group>"; };
+		11E24EEB20840AC0000B288E /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
+		11FCB34F20840B94005D5049 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		11FCB35120842D3A005D5049 /* UIAlertController+Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Show.swift"; sourceTree = "<group>"; };
 		1E2527B01DAF3F2F798162EA /* Pods-quotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotes.release.xcconfig"; path = "Pods/Target Support Files/Pods-quotes/Pods-quotes.release.xcconfig"; sourceTree = "<group>"; };
 		3F60B6BB48753AD634BDB7CA /* Pods-quotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-quotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-quotes/Pods-quotes.debug.xcconfig"; sourceTree = "<group>"; };
 		628030424FBAC36A3AD0B6D2 /* Pods_Quotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Quotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +110,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0996C03F7532CF4CD311A55B /* Pods_quotes.framework in Frameworks */,
 				F02014710779A6CC1EEF9571 /* Pods_Quotes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				117F6F98207FDFEE00719311 /* QuotesUser.swift */,
+				116B692620831F3F00A4C149 /* Quote.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,11 +129,13 @@
 		112222F8207F063500226C83 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				116B692420831CCA00A4C149 /* GoogleService-Info.plist */,
 				11CB3EC0207F11BD009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf */,
 				11CB3EC1207F11BD009EA0A5 /* QanelasSoftDEMO-Medium.otf */,
 				11CB3EBF207F11BD009EA0A5 /* QanelasSoftDEMO-UltraLight.otf */,
 				112222F9207F063500226C83 /* AppDelegate.swift */,
 				112222FA207F063500226C83 /* Info.plist */,
+				116B691E2082F23C00A4C149 /* Quotes-Bridging-Header.h */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -137,14 +163,34 @@
 			children = (
 				1148904F207F008000F633D3 /* Assets.xcassets */,
 				117F6F92207FCFA800719311 /* Cells */,
+				116B68E42082D25B00A4C149 /* Controllers */,
 				11CB3EB8207F0E36009EA0A5 /* Extensions */,
 				112222F4207F063500226C83 /* Model */,
+				116B69212082FAD600A4C149 /* Networking */,
 				117F6F8B207FCF0E00719311 /* Storyboards */,
 				112222F8207F063500226C83 /* Supporting Files */,
 				11A12CE620806D77000D88E7 /* ViewControllers */,
 				11A12CEF20806D99000D88E7 /* Views */,
 			);
 			path = Quotes;
+			sourceTree = "<group>";
+		};
+		116B68E42082D25B00A4C149 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				11E24EE42083E7E7000B288E /* Config.swift */,
+				116B68E52082D37A00A4C149 /* GenerateUsersAndQuotesController.swift */,
+				11E24EE82083EAF6000B288E /* StartUpController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		116B69212082FAD600A4C149 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				116B69222082FB0700A4C149 /* QuotesHTTP.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		117F6F8B207FCF0E00719311 /* Storyboards */ = {
@@ -181,6 +227,7 @@
 				11A12CE920806D77000D88E7 /* QuotesViewController.swift */,
 				11A12CEA20806D77000D88E7 /* TabBarViewController.swift */,
 				11DF173020807BA70010F4CD /* QuoteReviewViewController.swift */,
+				11E24EE62083EA87000B288E /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -189,6 +236,8 @@
 			isa = PBXGroup;
 			children = (
 				11A12CF020806DAD000D88E7 /* QuotesNavigationBar.swift */,
+				119FAF482084394C00FB1A93 /* SearchView.swift */,
+				119FAF4A2084396200FB1A93 /* SearchView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +250,9 @@
 				11CB3EBD207F105A009EA0A5 /* UIFont+QuotesFont.swift */,
 				117F6F87207F190100719311 /* UIView+Autolayout.swift */,
 				117F6F89207F307D00719311 /* UIWindow+SafeAreaInsets.swift */,
+				11E24EEB20840AC0000B288E /* Date+String.swift */,
+				11FCB34F20840B94005D5049 /* String+Date.swift */,
+				11FCB35120842D3A005D5049 /* UIAlertController+Show.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -237,7 +289,6 @@
 				11489040207F008000F633D3 /* Frameworks */,
 				11489041207F008000F633D3 /* Resources */,
 				FEE410D873C92892C41D779B /* [CP] Embed Pods Frameworks */,
-				4D469C88324523AB834B0918 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,7 +311,7 @@
 				TargetAttributes = {
 					11489042207F008000F633D3 = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -288,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116B692520831CCA00A4C149 /* GoogleService-Info.plist in Resources */,
 				112222FE207F063500226C83 /* Info.plist in Resources */,
 				11A12CD720804C6D000D88E7 /* ProfileHeaderTableViewCell.xib in Resources */,
 				11A12CE1208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.xib in Resources */,
@@ -295,6 +347,7 @@
 				117F6F90207FCF0E00719311 /* LaunchScreen.storyboard in Resources */,
 				11CB3EC2207F12A7009EA0A5 /* QanelasSoftDEMO-ExtraBold.otf in Resources */,
 				11A12CE52080597D000D88E7 /* ProfileFeedCollectionViewCell.xib in Resources */,
+				119FAF4B2084396200FB1A93 /* SearchView.xib in Resources */,
 				11CB3EC3207F12A9009EA0A5 /* QanelasSoftDEMO-UltraLight.otf in Resources */,
 				11CB3EC4207F12AB009EA0A5 /* QanelasSoftDEMO-Medium.otf in Resources */,
 				117F6F96207FCFBD00719311 /* FeedTableViewCell.xib in Resources */,
@@ -306,21 +359,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4D469C88324523AB834B0918 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Quotes/Pods-Quotes-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D67F3A06FBF9373B2A026709 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -348,15 +386,27 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Quotes/Pods-Quotes-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire-SwiftyJSON/Alamofire_SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/MagicalRecord/MagicalRecord.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyContacts/SwiftyContacts.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire_SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicalRecord.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyContacts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -370,24 +420,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				116B69232082FB0700A4C149 /* QuotesHTTP.swift in Sources */,
 				11CB3EBC207F0E97009EA0A5 /* UIColor+Hex.swift in Sources */,
+				11FCB35020840B94005D5049 /* String+Date.swift in Sources */,
 				117F6F8A207F307D00719311 /* UIWindow+SafeAreaInsets.swift in Sources */,
+				11E24EE72083EA87000B288E /* LoginViewController.swift in Sources */,
 				117F6F88207F190100719311 /* UIView+Autolayout.swift in Sources */,
 				11CB3EBA207F0E63009EA0A5 /* UIColor+QuotesColors.swift in Sources */,
 				11CB3EBE207F105A009EA0A5 /* UIFont+QuotesFont.swift in Sources */,
 				112222FD207F063500226C83 /* AppDelegate.swift in Sources */,
 				11A12CEC20806D78000D88E7 /* ProfileViewController.swift in Sources */,
+				11E24EE92083EAF6000B288E /* StartUpController.swift in Sources */,
 				11A12CEE20806D78000D88E7 /* TabBarViewController.swift in Sources */,
 				117F6F99207FDFEE00719311 /* QuotesUser.swift in Sources */,
 				11DF173120807BA70010F4CD /* QuoteReviewViewController.swift in Sources */,
+				11E24EEC20840AC0000B288E /* Date+String.swift in Sources */,
 				11A12CD620804C6D000D88E7 /* ProfileHeaderTableViewCell.swift in Sources */,
 				11A12CEB20806D78000D88E7 /* FeedViewController.swift in Sources */,
 				11A12CE42080597D000D88E7 /* ProfileFeedCollectionViewCell.swift in Sources */,
 				11A12CE0208050A8000D88E7 /* ProfileQuotesSelectionTableViewCell.swift in Sources */,
+				11E24EE52083E7E7000B288E /* Config.swift in Sources */,
 				11A12CDC20804CBF000D88E7 /* ProfileQuotesTableViewCell.swift in Sources */,
 				11A12CF120806DAD000D88E7 /* QuotesNavigationBar.swift in Sources */,
 				11A12CED20806D78000D88E7 /* QuotesViewController.swift in Sources */,
+				11FCB35220842D3A005D5049 /* UIAlertController+Show.swift in Sources */,
+				119FAF492084394C00FB1A93 /* SearchView.swift in Sources */,
 				117F6F95207FCFBD00719311 /* FeedTableViewCell.swift in Sources */,
+				116B692720831F3F00A4C149 /* Quote.swift in Sources */,
+				116B68E62082D37A00A4C149 /* GenerateUsersAndQuotesController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,11 +587,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9N3L678TDF;
 				INFOPLIST_FILE = "quotes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarahlee.quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Quotes/Supporting Files/Quotes-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -545,11 +606,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9N3L678TDF;
 				INFOPLIST_FILE = "quotes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sarahlee.quotes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Quotes/Supporting Files/Quotes-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
