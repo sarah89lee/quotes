@@ -12,6 +12,8 @@
   - Valiate all text fields are correct: phone numbers, passwords, month, year, day.
 - Presenting User Profiles
   - An idea response from the server will return Quotes with User objects, which will make presenting user profiles easier. Right now the mock data is created for the purpose of displaying data quickly for the assignment. NOT THE BEST. 
+ - GenerateUsersAndQuotesController
+  - This class is bloated, but is just used to mock data.
 
 ## TL;DR
 - User login is just taking in a phoneNumber so we can detect who the loggedInUser is from the phone’s contacts
