@@ -59,12 +59,20 @@ class QuotesViewController: UIViewController {
         textView.becomeFirstResponder()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let navigationController = navigationController,
+            let navigationBar = navigationController.navigationBar as? QuotesNavigationBar {
+            navigationBar.setNavigationBar(title: "QUOTES", tint: QuotesNavigationBarTint.Dark)
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if let navigationController = navigationController,
             let navigationBar = navigationController.navigationBar as? QuotesNavigationBar {
-            navigationBar.setNavigationBar(title: "QUOTES", tint: QuotesNavigationBarTint.Dark)
             navigationBar.topItem?.setLeftBarButton(UIBarButtonItem(customView: cancelButton), animated: false)
         }
     }

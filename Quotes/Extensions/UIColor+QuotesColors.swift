@@ -14,6 +14,10 @@ extension UIColor {
         return UIColor(hex: "#ff646c")
     }
     
+    class func navigationBarPinkColor() -> UIColor {
+        return UIColor(hex: "#F26B6F")
+    }
+    
     class func lightGrayColor() -> UIColor {
         return UIColor(hex: "#AAAAAA")
     }

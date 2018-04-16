@@ -33,8 +33,10 @@ class QuotesNavigationBar: UINavigationBar {
         
         if tint == QuotesNavigationBarTint.Dark {
             titleLabel.textColor = UIColor.white
+            barTintColor = UIColor.navigationBarPinkColor()
             setValue(true, forKey: "hidesShadow")
         } else {
+            titleLabel.textColor = UIColor.quotesPinkColor()
             barTintColor = UIColor.white
             setValue(false, forKey: "hidesShadow")
         }
