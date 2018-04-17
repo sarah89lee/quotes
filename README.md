@@ -1,3 +1,9 @@
+## UPDATE V2
+- No longer using Firebase
+- Data parsed and store in a plist
+- Fixed search to show both Said By and Heard By. It was only filtering for Said By users.
+- Fixed tab bar underline returning back to index 0 whenever view appears again.
+
 ## NOTES
 - Only tested on iPhone X iOS 11.3
 - Must run on an actual device since we are using the phone's contacts to mock data.
