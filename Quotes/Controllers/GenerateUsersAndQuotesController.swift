@@ -8,8 +8,6 @@
 
 import SwiftyContacts
 import Contacts
-import Firebase
-import FirebaseDatabase
 import PKHUD
 
 /// This class creates a user object for all contacts on a user's phone
@@ -18,6 +16,8 @@ class GenerateUsersAndQuotesController: NSObject {
     // MARK: - Properties
     
     static let QUOTES_GENERATED_NOTIFICATION        = "config.quotes.quotesGenerated"
+    static let QUOTES_PLIST                         = "quotes.plist"
+    static let USERS_PLIST                          = "users.plist"
     
     var quotesString: [String] = [String]()
     var quotes: [Quote] = [Quote]()
@@ -25,9 +25,42 @@ class GenerateUsersAndQuotesController: NSObject {
     
     private let userDefaults: UserDefaults = UserDefaults.standard
     private var quotesDictionary: [String: String] = [String: String]()
-    private var usersDictionary: [String: String] = [String: String]()
-    private let databaseReference: DatabaseReference = Database.database().reference()
-    
+    private let fileManager: FileManager = FileManager.default
+    private let documents = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
+    private var quotesPlistPath: String {
+        get {
+            return documents.appendingPathComponent(GenerateUsersAndQuotesController.QUOTES_PLIST)
+        }
+    }
+    private var usersPlistPath: String {
+        get {
+            return documents.appendingPathComponent(GenerateUsersAndQuotesController.USERS_PLIST)
+        }
+    }
+    private var avatarImagePath: NSString {
+        get {
+            let path = documents.appendingPathComponent("avatarImages") as NSString
+            if !fileManager.fileExists(atPath: path as String, isDirectory: nil) {
+                do {
+                    try fileManager.createDirectory(atPath: path as String, withIntermediateDirectories: true, attributes: nil)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+            return path
+        }
+    }
+    private var usersPlistPathExists: Bool {
+        get {
+            return fileManager.fileExists(atPath: usersPlistPath, isDirectory: nil)
+        }
+    }
+    private var quotesPlistPathExists: Bool {
+        get {
+            return fileManager.fileExists(atPath: quotesPlistPath, isDirectory: nil)
+        }
+    }
+
     // MARK: - Public Methods
     
     func requestContactsPermissionAndMockData() {
@@ -43,32 +76,33 @@ class GenerateUsersAndQuotesController: NSObject {
         }
     }
     
-    func createQuote(quote: String, saidById: String, heardByIds: [String], date: String) {
-        HUD.show(.progress)
-        
-        // if we have quotes already, let's clear the array since we're fetching them again
-        quotes.removeAll()
-        
-        databaseReference.child("quotes").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-            guard let strongSelf = self else {
-                return
-            }
+    func removeData() {
+        do {
+            try fileManager.removeItem(atPath: usersPlistPath)
+            try fileManager.removeItem(atPath: quotesPlistPath)
+            try fileManager.removeItem(atPath: avatarImagePath as String)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func createQuote(quote: String, saidByPhoneNumber: String, heardByPhoneNumbers: [String], date: String) {
+        if let quotesArray = NSArray(contentsOfFile: quotesPlistPath) {
+            let mutableQuotesArray = NSMutableArray(array: quotesArray)
             
-            let value = [
+            let quoteDict = [
                 "quote" : quote,
                 "date" : date,
-                "saidBy" : saidById,
-                "heardBy" : heardByIds
-                ] as [String : Any]
+                "saidBy" : saidByPhoneNumber,
+                "heardBy" : heardByPhoneNumbers
+                ] as NSMutableDictionary
             
-            let autoId = strongSelf.databaseReference.childByAutoId()
-            strongSelf.databaseReference.child("quotes").child(autoId.key).setValue(value)
+            mutableQuotesArray.add(quoteDict)
+            mutableQuotesArray.write(toFile: quotesPlistPath, atomically: true)
             
-            // let's store the id so we can easily retrive the quote object to attach the users to later
-            strongSelf.quotesDictionary[quote] = autoId.key
-
-            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
-        })
+            // retrieve the quotes again so we can refresh the feed
+            getQuotes()
+        }
     }
     
     func getLoggedInUsersQuotes() -> [Quote] {
@@ -79,82 +113,100 @@ class GenerateUsersAndQuotesController: NSObject {
     func getLoggedInUsersQuotesAllUsers() -> [QuotesUser] {
         let combinedArray = getLoggedInUserSaidByQuotes() + getLoggedInUserHeardByQuotes()
         let filteredArray = users.filter { quoteUser in
-            combinedArray.contains(where: { $0.saidByUserId == quoteUser.userId || $0.heardByUserIds.contains(quoteUser.userId)}
+            combinedArray.contains(where: { $0.saidByPhoneNumber == quoteUser.phoneNumber || $0.heardByPhoneNumbers.contains(quoteUser.phoneNumber)}
         )}
         
         return filteredArray
     }
     
     func getLoggedInUserSaidByQuotes() -> [Quote] {
-        guard let userId = Config.getLoggedInUserId() else {
+        guard let phoneNumber = Config.getLoggedInUserPhoneNumber() else {
             return [Quote]()
         }
         
-        let filteredArray = quotes.filter{ $0.saidByUserId == userId }
+        let filteredArray = quotes.filter{ $0.saidByPhoneNumber == phoneNumber }
         return filteredArray.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
     }
     
     func getLoggedInUserHeardByQuotes() -> [Quote] {
-        guard let userId = Config.getLoggedInUserId() else {
+        guard let phoneNumber = Config.getLoggedInUserPhoneNumber() else {
             return [Quote]()
         }
         
-        let filteredArray = quotes.filter{ $0.heardByUserIds.contains(userId) }
+        let filteredArray = quotes.filter{ $0.heardByPhoneNumbers.contains(phoneNumber) }
         return filteredArray.sorted(by: { $0.date.compare($1.date) == .orderedDescending })
     }
     
     func getQuotes() {
-        // if we have quotes already, let's clear the array since we're fetching them again
         quotes.removeAll()
-
-        databaseReference.child("quotes").observe(.value, with: { [weak self] snapshot in
-            let enumerator = snapshot.children
-            while let rest = enumerator.nextObject() as? DataSnapshot {
-                if let dict = rest.value as? NSDictionary,
-                    let quoteString = dict.object(forKey: "quote") as? String,
-                    let date = dict.object(forKey: "date") as? String,
-                    let saidBy = dict.object(forKey: "saidBy") as? String,
-                    let heardBy = dict.object(forKey: "heardBy") as? [String] {
-                    let quote = Quote(quote: quoteString, date: date.toDate(dateFormat: "dd-MMM-yyyy"), saidBy: saidBy, heardBy: heardBy)
-                    self?.quotes.append(quote)
-                }
+        
+        if !quotesPlistPathExists {
+            return
+        }
+        
+        if let quotesArray = NSArray(contentsOfFile: quotesPlistPath) {
+            if quotesArray.count == 0 {
+                return
             }
             
-            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
-        })
+            for dict in quotesArray {
+                if let dictionary = dict as? NSDictionary,
+                    let quote = dictionary["quote"],
+                    let date = dictionary["date"],
+                    let saidBy = dictionary["saidBy"],
+                    let heardBy = dictionary["heardBy"] as? NSArray {
+                    let quote = Quote(
+                        quote: quote as! String,
+                        date: (date as! String).toDate(dateFormat: "dd-MMM-yyyy") ,
+                        saidBy: saidBy as! String,
+                        heardBy: heardBy as! [String]
+                        
+                    )
+                    quotes.append(quote)
+                }
+            }
+        }
+
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
     }
     
     func getUsers() {
-        // if we have users already, let's clear the array since we're fetching them again
-        if users.count > 0 {
-            users.removeAll()
+        users.removeAll()
+        
+        if !usersPlistPathExists {
+            return
         }
         
-        databaseReference.child("users").observe(.value, with: { [weak self] snapshot in
-            let enumerator = snapshot.children
-            while let rest = enumerator.nextObject() as? DataSnapshot {
-                if let dict = rest.value as? NSDictionary,
-                    let firstName = dict.object(forKey: "firstName") as? String,
-                    let lastName = dict.object(forKey: "lastName") as? String,
-                    let phoneNumber = dict.object(forKey: "phoneNumber") as? String,
-                    let imageData = dict.object(forKey: "imageData") as? String {
-                    let stringToData = NSData(base64Encoded: imageData, options: NSData.Base64DecodingOptions.ignoreUnknownCharacters)
-                    let user = QuotesUser(userId: rest.key, firstName: firstName, lastName: lastName, phoneNumber: phoneNumber, image: stringToData == nil ? nil :UIImage(data: stringToData! as Data))
-                    
-                    if let loggedInUserPhoneNumber = Config.getLoggedInUserPhoneNumber(),
-                        phoneNumber.contains(loggedInUserPhoneNumber) {
-                        Config.setLoggedInUser(user: user)
-                        
-                        let image = stringToData == nil ? nil : UIImage(data: stringToData! as Data)
-                        Config.setLoggedInUserImage(image: image)
-                    }
-
-                    self?.users.append(user)
-                }
+        if let usersArray = NSArray(contentsOfFile: usersPlistPath) {
+            if usersArray.count == 0 {
+                return
             }
             
-            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
-        })
+            for dict in usersArray {
+                if let dictionary = dict as? NSDictionary,
+                    let firstName = dictionary["firstName"],
+                    let lastName = dictionary["lastName"],
+                    let phoneNumber = dictionary["phoneNumber"],
+                    let avatarImageName = dictionary["avatarImageName"] {
+                    var image: UIImage?
+                    if !(avatarImageName as! String).isEmpty {
+                        let avatarPath = (avatarImagePath as NSString).appendingPathComponent("/\(avatarImageName as! String)")
+                        if fileManager.fileExists(atPath: avatarPath) {
+                            image = UIImage(contentsOfFile: avatarPath)
+                        }
+                    }
+                    let user = QuotesUser(
+                        firstName: firstName as! String,
+                        lastName: lastName as! String,
+                        phoneNumber: phoneNumber as! String,
+                        image: image
+                    )
+                    users.append(user)
+                }
+            }
+        }
+        
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
     }
     
     // MARK: - Private Methods
@@ -163,10 +215,18 @@ class GenerateUsersAndQuotesController: NSObject {
         fetchContacts(completionHandler: { [weak self] (result) in
             switch result{
             case .Success(response: let contacts):
+                guard let strongSelf = self else {
+                    return
+                }
+                if strongSelf.usersPlistPathExists && strongSelf.quotesPlistPathExists {
+                    strongSelf.getQuotes()
+                    strongSelf.getUsers()
+                    return
+                }
+                
                 // only get contacts with a first and last name
                 let filteredContacts = contacts.filter { !$0.givenName.isEmpty && !$0.familyName.isEmpty }
-
-                self?.createUsers(contacts: filteredContacts, completion: { [weak self] () in
+                strongSelf.createUsers(contacts: filteredContacts, completion: { [weak self] () in
                     self?.fetchQuotes()
                 })
                 break
@@ -178,56 +238,56 @@ class GenerateUsersAndQuotesController: NSObject {
     }
     
     fileprivate func createUsers(contacts: [CNContact], completion: @escaping () -> ()) {
-        databaseReference.child("users").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-            guard let strongSelf = self else {
-                return
-            }
-            if snapshot.childrenCount > 0 && Config.getLoggedInUser() != nil {
-                strongSelf.getQuotes()
-                strongSelf.getUsers()
-                completion()
-                return
-            }
-            for contact in contacts {
-                if contact.phoneNumbers.count > 0,
-                    let phoneNumber = contact.phoneNumbers[0].value.value(forKey: "stringValue") as? String {
-                    let phoneOnlyNumbers = String(phoneNumber.filter {"01234567890.".contains($0)})
+        let usersDictionaryArray: NSMutableArray = NSMutableArray()
+        
+        for contact in contacts {
+            if contact.phoneNumbers.count > 0,
+                let phoneNumber = contact.phoneNumbers[0].value.value(forKey: "stringValue") as? String {
+                let phoneOnlyNumbers = String(phoneNumber.filter {"01234567890.".contains($0)})
                 
-                    var imageData: Data?
-                    var imageDataString: String = ""
-                    if contact.isKeyAvailable(CNContactImageDataKey) {
-                        if let contactImageData = contact.imageData {
-                            imageData = UIImagePNGRepresentation(UIImage(data: contactImageData)!)
-                            imageDataString = imageData!.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-                        }
-                    }
-                 
-                    let value = [
-                        "firstName" : contact.givenName,
-                        "lastName" : contact.familyName,
-                        "phoneNumber" : phoneOnlyNumbers,
-                        "imageData" : imageDataString
-                    ]
-                    
-                    let autoId = strongSelf.databaseReference.childByAutoId()
-                    strongSelf.databaseReference.child("users").child(autoId.key).setValue(value)
-                    strongSelf.usersDictionary[phoneOnlyNumbers] = autoId.key
-
-                    let user = QuotesUser(userId: autoId.key, firstName: contact.givenName, lastName: contact.familyName, phoneNumber: phoneOnlyNumbers, image: imageData == nil ? nil : UIImage(data: imageData!))
-                    strongSelf.users.append(user)
-                    
-                    if let loggedInUserPhoneNumber = Config.getLoggedInUserPhoneNumber(),
-                        phoneOnlyNumbers.contains(loggedInUserPhoneNumber) {
-                        Config.setLoggedInUser(user: user)
-                        Config.setLoggedInUserId(userId: autoId.key)
-                        let image = imageData == nil ? nil : UIImage(data: imageData! as Data)
-                        Config.setLoggedInUserImage(image: image)
+                // store the image in the avatarImages folder in the documents directory
+                var imagePath: String = ""
+                var avatarImage: UIImage = UIImage()
+                if contact.isKeyAvailable(CNContactImageDataKey) {
+                    if let contactImageData = contact.imageData, let image = UIImage(data: contactImageData) {
+                        avatarImage = image
+                        
+                        imagePath = avatarImagePath.appendingPathComponent("\(contact.givenName)\(contact.familyName).jpg")
+                      
+                        let imageData = UIImageJPEGRepresentation(image, 0.5)
+                        fileManager.createFile(atPath: imagePath as String, contents: imageData, attributes: nil)
                     }
                 }
+                
+                let value = [
+                    "firstName" : contact.givenName,
+                    "lastName" : contact.familyName,
+                    "phoneNumber" : phoneOnlyNumbers,
+                    "avatarImageName" : ("\(contact.givenName)\(contact.familyName).jpg")
+                ]
+                
+                usersDictionaryArray.add(value)
+                
+                let user = QuotesUser(
+                    firstName: contact.givenName,
+                    lastName: contact.familyName,
+                    phoneNumber: phoneOnlyNumbers,
+                    image: avatarImage
+                )
+                
+                users.append(user)
+                
+                if let loggedInUserPhoneNumber = Config.getLoggedInUserPhoneNumber(),
+                    phoneOnlyNumbers.contains(loggedInUserPhoneNumber) {
+                    Config.setLoggedInUser(user: user)
+                    Config.setLoggedInUserImage(image: avatarImage)
+                }
             }
-            
-            completion()
-        })
+        }
+        
+        usersDictionaryArray.write(toFile: usersPlistPath, atomically: true)
+        
+        completion()
     }
     
     fileprivate func fetchQuotes() {
@@ -249,9 +309,10 @@ class GenerateUsersAndQuotesController: NSObject {
         guard users.count > 0 else {
             return
         }
+
+        let quotesDictionaryArray: NSMutableArray = NSMutableArray()
         
-        // let's just create 200 quotes
-        for _ in 0..<200 {
+        for _ in 0..<quotesString.count {
             let quoteRandomInt = Int(arc4random_uniform(UInt32(quotesString.count)))
             let userRandomInt = Int(arc4random_uniform(UInt32(users.count)))
             let quoteString = quotesString[quoteRandomInt]
@@ -261,62 +322,38 @@ class GenerateUsersAndQuotesController: NSObject {
 
             // let's assign heardBy users and for testing purposes, just restrict it to a max of 3 users
             let heardByMaxInt = Int(arc4random_uniform(UInt32(3))) + 1
-            var heardByUsers: [QuotesUser] = [QuotesUser]()
+            var heardByUsers: [String] = [String]()
             
             for _ in 0..<heardByMaxInt {
                 let heardByRandomInt = Int(arc4random_uniform(UInt32(users.count)))
                 let randomHeardByUser = users[heardByRandomInt]
-                heardByUsers.append(randomHeardByUser)
+                heardByUsers.append(randomHeardByUser.phoneNumber)
             }
 
-            let heardByPhoneNumbers = heardByUsers.map{ usersDictionary[$0.phoneNumber] }
-            createQuotesDatabase(quoteString: quoteString, saidByUser: saidByUser, heardByUsers: heardByPhoneNumbers)
-        }
-    }
-    
-    fileprivate func createQuotesDatabase(quoteString: String, saidByUser: QuotesUser, heardByUsers: [String?]) {
-        databaseReference.child("quotes").observeSingleEvent(of: .value, with: { [weak self] snapshot in
-            guard let strongSelf = self else {
-                return
-            }
-            
-            if snapshot.childrenCount > 0 && Config.getLoggedInUser() != nil {
-                return
-            }
-            
-            let randomDate: Date = strongSelf.generateRandomDate(daysBack: 30) ?? Date()
+            let randomDate: Date = generateRandomDate(daysBack: 30) ?? Date()
             
             let value = [
                 "quote" : quoteString,
                 "date" : randomDate.toString(dateFormat: "dd-MMM-yyyy"),
-                "saidBy" : strongSelf.usersDictionary[saidByUser.phoneNumber] as! String,
+                "saidBy" : saidByUser.phoneNumber,
                 "heardBy" : heardByUsers
                 ] as [String : Any]
             
-            let autoId = strongSelf.databaseReference.childByAutoId()
-            strongSelf.databaseReference.child("quotes").child(autoId.key).setValue(value)
+            quotesDictionaryArray.add(value)
             
-            // let's store the id so we can easily retrive the quote object to attach the users to later
-            strongSelf.quotesDictionary[quoteString] = autoId.key
+            let quote = Quote(
+                quote: quoteString,
+                date: randomDate,
+                saidBy: saidByUser.phoneNumber,
+                heardBy: heardByUsers
             
-            if let userId = strongSelf.usersDictionary[saidByUser.phoneNumber] {
-                strongSelf.attachUserIdToQuote(userId: userId, date: randomDate, quote: quoteString, heardBy: heardByUsers)
-            }
-            
-            NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
-        })
-    }
-
-    fileprivate func attachUserIdToQuote(userId: String, date: Date, quote: String, heardBy: [String?]) {
-        if let dictQuote = quotesDictionary[quote] {
-            let quoteRef = databaseReference.child("quotes").child(dictQuote)
-            quoteRef.updateChildValues(["saidBy" : userId, "heardBy" : heardBy])
-            
-            if let heardBy = heardBy as? [String] {
-                let quote = Quote(quote: quote, date: date, saidBy: userId, heardBy: heardBy)
-                quotes.append(quote)
-            }
+            )
+            quotes.append(quote)
         }
+        
+        quotesDictionaryArray.write(toFile: quotesPlistPath, atomically: true)
+        
+        NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION)))
     }
     
     fileprivate func generateRandomDate(daysBack: Int) -> Date? {

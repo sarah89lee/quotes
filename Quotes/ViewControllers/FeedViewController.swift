@@ -126,11 +126,17 @@ class FeedViewController: UIViewController {
     // MARK: - NSNotificationCenter Observer Methods
     
     @objc func handleQuotesGeneratedNotification(_ notification: Notification) {
-        let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        if let generateUsersAndQuotesController = appDelegate.generateUsersAndQuotesController {
-            quotesDatasource = generateUsersAndQuotesController.getLoggedInUsersQuotes()
-            tableView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+            
+            if let generateUsersAndQuotesController = appDelegate.generateUsersAndQuotesController {
+                strongSelf.quotesDatasource = generateUsersAndQuotesController.getLoggedInUsersQuotes()
+                strongSelf.tableView.reloadData()
+            }
         }
     }
 }
@@ -172,8 +178,8 @@ extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? FeedTableViewCell {
             let quote = quotesDatasource[indexPath.row]
-            let saidByUser: [QuotesUser] = quotesUsers.filter{ $0.userId == quote.saidByUserId }
-            let heardByUsers: [QuotesUser] = quotesUsers.filter{ quote.heardByUserIds.contains($0.userId) }
+            let saidByUser: [QuotesUser] = quotesUsers.filter{ $0.phoneNumber == quote.saidByPhoneNumber }
+            let heardByUsers: [QuotesUser] = quotesUsers.filter{ quote.heardByPhoneNumbers.contains($0.phoneNumber) }
             if saidByUser.count > 0 {
                 cell.setUserName(name: saidByUser[0].fullName)
                 cell.setQuote(quote: quotesDatasource[indexPath.row].quote)

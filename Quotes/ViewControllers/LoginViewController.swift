@@ -38,8 +38,6 @@ class LoginViewController: UIViewController {
     // MARK: - Action Methods
     
     @IBAction func loginButtonTouched(_ sender: Any) {
-        HUD.show(HUDContentType.progress)
-        
         Config.setLoggedInUserPhoneNumber(phoneNumber: phoneNumberTextField.text)
         
         dismiss(animated: true, completion: nil)

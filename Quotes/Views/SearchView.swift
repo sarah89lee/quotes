@@ -48,13 +48,13 @@ class SearchView: UIView {
     
     func searchQuoteUser(searchTerm: String) {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        let allLoggedInUserQuotes = appDelegate.generateUsersAndQuotesController?.getLoggedInUserSaidByQuotes() ?? [Quote]()
+        let allLoggedInUserQuotes = appDelegate.generateUsersAndQuotesController?.getLoggedInUsersQuotes() ?? [Quote]()
         let allLoggedInUsers = appDelegate.generateUsersAndQuotesController?.getLoggedInUsersQuotesAllUsers() ?? [QuotesUser]()
     
-        let filteredUsersArray = allLoggedInUsers.filter{ $0.fullName.contains(searchTerm) }
+        let filteredUsersArray = allLoggedInUsers.filter{ $0.fullName.lowercased().contains(searchTerm.lowercased()) }
         
         let filteredQuotesArray = allLoggedInUserQuotes.filter { quote in
-            filteredUsersArray.contains(where: { $0.userId == quote.saidByUserId || quote.heardByUserIds.contains($0.userId) }
+            filteredUsersArray.contains(where: { $0.phoneNumber == quote.saidByPhoneNumber || quote.heardByPhoneNumbers.contains($0.phoneNumber) }
             )}
         
         searchDatasource = filteredQuotesArray
@@ -91,8 +91,8 @@ extension SearchView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let cell = cell as? FeedTableViewCell {
             let quote = searchDatasource[indexPath.row]
-            let saidByUser: [QuotesUser] = quotesUsers.filter{ $0.userId == quote.saidByUserId }
-            let heardByUsers: [QuotesUser] = quotesUsers.filter{ quote.heardByUserIds.contains($0.userId) }
+            let saidByUser: [QuotesUser] = quotesUsers.filter{ $0.phoneNumber == quote.saidByPhoneNumber }
+            let heardByUsers: [QuotesUser] = quotesUsers.filter{ quote.heardByPhoneNumbers.contains($0.phoneNumber) }
             if saidByUser.count > 0 {
                 cell.setUserName(name: saidByUser[0].fullName)
                 cell.setQuote(quote: searchDatasource[indexPath.row].quote)

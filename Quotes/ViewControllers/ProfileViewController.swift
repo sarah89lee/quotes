@@ -59,6 +59,10 @@ class ProfileViewController: UIViewController {
                 Config.setLoggedInUserPhoneNumber(phoneNumber: nil)
                 Config.setLoggedInUserImage(image: nil)
                 Config.setLoggedInUserId(userId: nil)
+                
+                let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.generateUsersAndQuotesController?.removeData()
+                
                 if let strongSelf = self {
                     StartUpController.checkUserAuthentication(viewController: strongSelf)
                     strongSelf.tableView.reloadData()
@@ -92,7 +96,10 @@ extension ProfileViewController: UITableViewDelegate {
         if let cell = cell as? ProfileHeaderTableViewCell {
             if let image = Config.getLoggedInUserImage() {
                 cell.setUserImage(image: image)
+            } else {
+                cell.setUserImage(image: nil)
             }
+            
             cell.nameLabel.text = Config.getLoggedInUser()?.fullName
             
             cell.logoutButton.addTarget(

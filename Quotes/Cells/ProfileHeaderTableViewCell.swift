@@ -29,8 +29,13 @@ class ProfileHeaderTableViewCell: UITableViewCell {
     
     // MARK: - Public Methods
     
-    func setUserImage(image: UIImage) {
-        avatarImageView.image = image
+    func setUserImage(image: UIImage?) {
+        if let image = image {
+            avatarImageView.image = image
+        } else {
+            avatarImageView.image = nil
+        }
+        
         avatarImageView.layer.cornerRadius = 50.0
         avatarImageView.layer.masksToBounds = true
     }

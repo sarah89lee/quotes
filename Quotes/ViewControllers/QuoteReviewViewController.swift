@@ -135,8 +135,8 @@ class QuoteReviewViewController: UIViewController {
             let heardByUsers = generateUsersAndQuotesController.users.filter { heardTextField.text!.contains($0.firstName) && heardTextField.text!.contains($0.lastName) }
             
             if saidByUser.count > 0 && heardByUsers.count > 0 {
-                let heardByUsersIds = heardByUsers.map { $0.userId }
-                let saidByUserId = saidByUser[0].userId
+                let heardByUsersPhoneNumbers = heardByUsers.map { $0.phoneNumber }
+                let saidByUserPhoneNumber = saidByUser[0].phoneNumber
                 
                 let dateString: String = monthTextField.text! + "-" + dayTextField.text! + "-" + yearTextField.text!
                 let dateFormatter = DateFormatter()
@@ -150,8 +150,8 @@ class QuoteReviewViewController: UIViewController {
 
                 generateUsersAndQuotesController.createQuote(
                     quote: quote,
-                    saidById: saidByUserId,
-                    heardByIds: heardByUsersIds,
+                    saidByPhoneNumber: saidByUserPhoneNumber,
+                    heardByPhoneNumbers: heardByUsersPhoneNumbers,
                     date: formattedDateString
                 )
                 

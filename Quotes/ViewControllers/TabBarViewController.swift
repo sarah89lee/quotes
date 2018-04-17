@@ -53,15 +53,9 @@ class TabBarViewController: UITabBarController {
         )
 
         // first item is selected by default
-        setLineFrameWithIndex(index: 1)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // first item is selected by default
         setLineFrameWithIndex(index: 0)
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tabBar.bringSubview(toFront: selectedLine)

@@ -49,6 +49,25 @@ class ProfileQuotesTableViewCell: UITableViewCell {
             UINib(nibName: "ProfileFeedCollectionViewCell", bundle: nil),
             forCellWithReuseIdentifier: "ProfileFeedCollectionViewCell"
         )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleQuotesGeneratedNotification(_:)),
+            name: Notification.Name(rawValue: GenerateUsersAndQuotesController.QUOTES_GENERATED_NOTIFICATION),
+            object: nil
+        )
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // MARK: - NSNotificationCenter Observer Methods
+    
+    @objc func handleQuotesGeneratedNotification(_ notification: Notification) {
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     // MARK: - Public Methods

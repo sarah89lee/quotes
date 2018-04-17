@@ -7,21 +7,14 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseStorage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var generateUsersAndQuotesController: GenerateUsersAndQuotesController?
-    var storage: Storage?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
-        
-        storage = Storage.storage()
-        
         // initialize controller to generate mock data
         generateUsersAndQuotesController = GenerateUsersAndQuotesController()
 

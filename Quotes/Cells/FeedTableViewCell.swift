@@ -85,8 +85,7 @@ class FeedTableViewCell: UITableViewCell {
                 string: user.fullName,
                 attributes: [
                     NSAttributedStringKey.foregroundColor : UIColor.black,
-                    NSAttributedStringKey.link : user.userId,
-//                    NSAttributedStringKey.font : UIFont.extraBoldFont(size: 14.0),
+                    NSAttributedStringKey.link : user.phoneNumber,
                     NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue,
                     NSAttributedStringKey.underlineColor : UIColor.black
                 ]
