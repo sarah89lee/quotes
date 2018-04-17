@@ -55,7 +55,7 @@
 /* Begin PBXFileReference section */
 		0BBC51F81E45BA9358ECABA3 /* Pods-Quotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Quotes.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Quotes/Pods-Quotes.debug.xcconfig"; sourceTree = "<group>"; };
 		112222F9207F063500226C83 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		112222FA207F063500226C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "/Users/sarahlee/Documents/quotes/quotes/Supporting Files/Info.plist"; sourceTree = "<absolute>"; };
+		112222FA207F063500226C83 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../quotes/Supporting Files/Info.plist"; sourceTree = "<group>"; };
 		11489043207F008000F633D3 /* Quotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Quotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1148904F207F008000F633D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		116B68E52082D37A00A4C149 /* GenerateUsersAndQuotesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateUsersAndQuotesController.swift; sourceTree = "<group>"; };
